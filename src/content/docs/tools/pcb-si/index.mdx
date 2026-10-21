@@ -1,0 +1,95 @@
+---
+title: PCB SI 3D Simulation Toolkit
+description: Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and cross-section impedance.
+---
+
+import GetTool from '../../../../components/GetTool.astro';
+import Link from '../../../../components/Link.astro';
+
+export const IMG = 'https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph';
+
+<span class="badge-status available">Available · 已推出</span>
+
+Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and
+cross-section impedance as needed — driving Ansys HFSS 3D Layout, SIwave and Circuit through PyAEDT and PyEDB.
+
+<p class="zh">
+  PCB SI 3D 模擬分析工具：從 PCB 裁出訊號通道並求解、串接各段，再看眼圖、TDR 定位與截面阻抗；透過 PyAEDT 與 PyEDB 驅動
+  Ansys HFSS 3D Layout、SIwave 與 Circuit。
+</p>
+
+<GetTool slug="pcb-si" />
+
+## What it does
+
+<p class="zh">主要功能</p>
+
+| Task                                                                    | 功能                                   |
+| ----------------------------------------------------------------------- | -------------------------------------- |
+| Net selection and cutout of the signal channel                          | 選訊號網路、裁出通道                   |
+| Endpoint ports, solver profiles and frequency sweeps                    | 元件端 Port、求解設定檔與掃頻          |
+| Whole-board or segmented analysis with per-segment HFSS / SIwave choice | 整片或分段求解，逐段指定 HFSS／SIwave  |
+| Scheduled solving, stop and retry, Touchstone cascading                 | 排程求解、停止與重試、Touchstone 串接  |
+| Eye Wizard for single-channel, multi-port and IBIS-AMI eye analysis     | 眼圖精靈：單通道、多埠與 IBIS-AMI      |
+| TDR mapped back to the Layout; 2D cross-section impedance               | TDR 標回 Layout；二維截面阻抗          |
+| Single-file HTML report with snapshots                                  | 一鍵單檔 HTML 報告                     |
+
+Some features are marked **Beta** in the tool: usable, with fewer validation cases. Full details are in the
+[public manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md) (Traditional Chinese).
+
+<p class="zh">部分功能在工具內標示 Beta：可以使用，但驗證案例較少。完整說明見公開操作手冊。</p>
+
+## Screenshots
+
+<p class="zh">畫面</p>
+
+<figure>
+  <img class="shot" src={`${IMG}/gui-15b-segment-overlays.png`} alt="Segmentation preview with no-cut zones and cut-point diagnostics on an Ansys example board" />
+  <figcaption>Segmentation preview: no-cut zones and cut-point diagnostics · 分段預覽：禁切區與切點診斷</figcaption>
+</figure>
+
+<figure>
+  <img class="shot" src={`${IMG}/gui-17b-whole-board-preview.png`} alt="Whole-board solve region preview assigned to HFSS" />
+  <figcaption>Whole-board solve region · 整片求解區域預覽</figcaption>
+</figure>
+
+<figure>
+  <img class="shot" src={`${IMG}/gui-14-solve-profile.png`} alt="Solver profile with judgement bandwidth and multi-segment frequency sweep" />
+  <figcaption>Solver profile and multi-segment sweep · 求解設定檔與多段掃頻</figcaption>
+</figure>
+
+Screenshots use Ansys example data, not customer boards. · <span class="zh">截圖使用 Ansys 範例資料，不含客戶板。</span>
+
+## Requirements
+
+<p class="zh">系統需求</p>
+
+Windows 10/11 x64, Ansys Electronics Desktop 2026 R1 with the licences each feature needs, and Python 3.12 (the
+launcher can install it). The maintained list is in the
+[public README](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md#complete-tool-prerequisites).
+
+<p class="zh">
+  Windows 10／11 64 位元、Ansys Electronics Desktop 2026 R1 與各功能所需授權、Python 3.12（啟動器可自動安裝）。完整清單以公開
+  README 為準。
+</p>
+
+The tool does not include, provide or bypass Ansys licensing.
+
+<p class="zh">本工具不含、不提供亦不繞過 Ansys 授權。</p>
+
+## How to get it
+
+<p class="zh">如何取得</p>
+
+The complete tool, commercial licensing and technical support are provided through Taiwan Auto-Design Co. (TADC).
+Simulation services and technical engagements are carried out through TADC using company-provided Ansys resources and
+licences. The [public repository](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit) contains front-end assets,
+documentation and demonstration data only; it cannot run the complete workflow.
+
+<p class="zh">
+  完整工具、商用授權與技術支援由虎門科技（TADC）提供；模擬服務與技術合作透過 TADC、使用公司提供的 Ansys
+  資源與授權進行。公開 repo 只有前端、文件與展示資料，無法執行完整流程。
+</p>
+
+<Link to="/trial/">Request a trial · 申請試用</Link> · <Link to="/tools/pcb-si/changelog/">Release notes · 版本更新</Link> ·{' '}
+<Link to="/feedback/">Feedback · 回饋</Link>

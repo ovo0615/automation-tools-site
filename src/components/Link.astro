@@ -1,0 +1,6 @@
+---
+import { url } from '../lib/url';
+const { to, class: cls } = Astro.props as { to: string; class?: string };
+---
+
+<a href={url(to)} class={cls}><slot /></a>

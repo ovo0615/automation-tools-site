@@ -1,0 +1,35 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+import site from '../data/site.json';
+---
+
+<Default />
+<div class="site-notice">
+  <p>
+    This is Jeff Hong's personal technical portfolio. It is not an official account of Taiwan Auto-Design Co. (TADC).
+    Ansys is a trademark of Ansys, Inc.; this portfolio is not officially affiliated with Ansys, Inc.
+  </p>
+  <p class="zh">
+    本網站為洪敬傑（Jeff Hong）的個人技術作品集，並非虎門科技股份有限公司（TADC）官方帳號。Ansys 為 Ansys, Inc.
+    的商標；本作品集與 Ansys, Inc. 無官方隸屬關係。
+  </p>
+  <p>
+    © 2026 Jeff Hong. Demonstration only — all rights reserved. Nothing on this site grants a licence to use, copy or
+    redistribute the tools or their content. Commercial licensing and support:{" "}
+    <a href={site.companyUrl}>{site.companyEn}</a>.
+  </p>
+  <p class="zh">僅供展示，保留所有權利；本網站不授予任何工具或內容的使用、複製或散布權。商用授權與技術支援請洽虎門科技（TADC）。</p>
+</div>
+
+<style>
+  .site-notice {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+  }
+  .site-notice p {
+    margin: 0 0 0.5rem;
+  }
+</style>

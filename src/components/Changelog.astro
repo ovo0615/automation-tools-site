@@ -1,0 +1,49 @@
+---
+import { toolData, toolList, fetchedAt } from '../lib/data';
+import { renderMarkdown } from '../lib/markdown';
+import { url } from '../lib/url';
+
+// slug given: one tool's releases. No slug: every tool, newest first.
+const { slug } = Astro.props as { slug?: string };
+const tools = toolList.filter((t) => t.repo && (!slug || t.slug === slug));
+const entries = tools
+  .flatMap((t) => (toolData(t.slug)?.sections ?? []).map((s) => ({ tool: t, s })))
+  .sort((a, b) => (b.s.date ?? '').localeCompare(a.s.date ?? ''));
+---
+
+{
+  entries.length === 0 && (
+    <p>
+      No released version yet. <span class="zh">尚未發布版本。</span>
+    </p>
+  )
+}
+{
+  entries.map(({ tool, s }) => (
+    <section class="release">
+      <h2 id={`${tool.slug}-${s.version}`}>
+        {!slug && <a href={url(`/tools/${tool.slug}/`)}>{tool.name}</a>} {s.heading}
+      </h2>
+      <p class="release-meta">
+        {s.releaseUrl && <a href={s.releaseUrl}>GitHub Release</a>}
+        {s.releaseUrl && ' · '}
+        <a href={`${toolData(tool.slug)!.repoUrl}/blob/${toolData(tool.slug)!.commit}/CHANGELOG.md`}>CHANGELOG.md</a>
+      </p>
+      <Fragment set:html={renderMarkdown(s.body)} />
+    </section>
+  ))
+}
+<p class="release-meta">
+  Generated from the public repository at build time ({fetchedAt.slice(0, 10)}). Only released versions are listed.
+  <span class="zh">建置時由公開 repo 自動產生（{fetchedAt.slice(0, 10)}），只列已發布版本。</span>
+</p>
+
+<style>
+  .release {
+    margin-top: 2rem;
+  }
+  .release-meta {
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+</style>

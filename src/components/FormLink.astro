@@ -1,0 +1,50 @@
+---
+import site from '../data/site.json';
+// kind: which Microsoft Forms link from site.json. Until Jeff creates the form, only the email route is live.
+const { kind, subject } = Astro.props as { kind: 'trial' | 'feedback'; subject: string };
+const form = site.forms[kind] as string | null;
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+---
+
+<div class="form-links not-content">
+  {
+    form ? (
+      <a class="btn primary" href={form}>
+        Open the form · 填寫表單
+      </a>
+    ) : (
+      <span class="btn disabled" aria-disabled="true">
+        Online form coming soon · 線上表單準備中
+      </span>
+    )
+  }
+  <a class="btn" href={mailto}>Email {site.email}</a>
+</div>
+
+<style>
+  .form-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--sl-color-accent);
+    color: var(--sl-color-accent-high);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn.primary {
+    background: var(--sl-color-accent);
+    color: var(--sl-color-black);
+  }
+  .btn.disabled {
+    border-style: dashed;
+    border-color: var(--sl-color-gray-4);
+    color: var(--sl-color-gray-3);
+    cursor: not-allowed;
+  }
+</style>

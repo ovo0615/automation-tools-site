@@ -1,0 +1,9 @@
+{
+  "_note": "Public-safe rules only. Customer names and internal code names are supplied at build time via SITE_GUARD_TERMS / SITE_GUARD_TERMS_FILE and must never be committed.",
+  "internalTerms": [],
+  "approvedImages": [
+    "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-15b-segment-overlays.png",
+    "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-17b-whole-board-preview.png",
+    "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-14-solve-profile.png"
+  ]
+}

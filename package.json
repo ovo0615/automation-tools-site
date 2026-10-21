@@ -1,0 +1,20 @@
+{
+  "name": "automation-tools-site",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "fetch-data": "node scripts/fetch-public-data.mjs",
+    "guard": "node scripts/guard.mjs",
+    "dev": "npm run fetch-data && astro dev",
+    "build": "npm run fetch-data && npm run guard -- --stage source && astro build && npm run guard -- --stage dist && npm run check-links",
+    "preview": "astro preview",
+    "check-links": "node scripts/check-links.mjs --external",
+    "test": "node --test \"tests/*.test.mjs\""
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42.6",
+    "astro": "^7.4.1",
+    "marked": "^18.1.1"
+  }
+}

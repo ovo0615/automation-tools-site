@@ -1,0 +1,83 @@
+---
+import { toolData } from '../lib/data';
+import { url } from '../lib/url';
+const { slug } = Astro.props as { slug: string };
+const data = toolData(slug);
+const dl = data?.download ?? { kind: 'trial', tag: null };
+const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
+---
+
+<div class="get-tool not-content">
+  {
+    dl.kind === 'download' ? (
+      <>
+        <p>
+          Latest release <strong>{dl.tag}</strong> · 最新版本
+        </p>
+        <ul>
+          {dl.files.map((f) => (
+            <li>
+              <a class="btn primary" href={f.url}>
+                Download 下載 {f.name}
+              </a>
+              <span class="meta">{mb(f.size)}</span>
+              {f.sha256Url && (
+                <a class="meta" href={f.sha256Url}>
+                  SHA-256
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <>
+        <a class="btn primary" href={url('/trial/')}>
+          Request a trial · 申請試用
+        </a>
+        <p class="meta">
+          {dl.tag ? `Latest release ${dl.tag} has no downloadable package. ` : 'No release has been published yet. '}
+          The complete tool is provided through TADC.
+        </p>
+        <p class="meta zh">
+          {dl.tag ? `最新版本 ${dl.tag} 未附安裝檔；` : '尚未發布版本；'}完整工具透過虎門科技（TADC）提供。
+        </p>
+      </>
+    )
+  }
+</div>
+
+<style>
+  .get-tool {
+    margin: 1.25rem 0;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--sl-color-accent);
+    border-radius: 0.6rem;
+    background: var(--sl-color-accent-low);
+  }
+  .get-tool ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+  }
+  .get-tool li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .btn.primary {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    background: var(--sl-color-accent);
+    color: var(--sl-color-black);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .meta {
+    margin: 0.5rem 0 0;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+  }
+</style>

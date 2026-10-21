@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "pcb-si",
+    "name": "PCB SI 3D Simulation Toolkit",
+    "nameZh": "PCB SI 3D 模擬分析工具",
+    "status": "available",
+    "repo": "ovo0615/pcb-si-3d-simulation-toolkit",
+    "summary": "Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and cross-section impedance.",
+    "summaryZh": "從 PCB 裁出訊號通道並求解、串接各段，再看眼圖、TDR 定位與截面阻抗。"
+  },
+  {
+    "slug": "pcb-pi",
+    "name": "PCB PI Toolkit",
+    "nameZh": "PCB PI 電源完整性工具",
+    "status": "coming-soon",
+    "summary": "Power-delivery network analysis workflow.",
+    "summaryZh": "電源分配網路（PDN）分析流程。"
+  },
+  {
+    "slug": "twmzm",
+    "name": "TWMZM RF Electrode Toolkit",
+    "nameZh": "TWMZM 行波調變器 RF 電極工具",
+    "status": "coming-soon",
+    "summary": "HFSS modelling and propagation-constant extraction for traveling-wave modulator electrodes.",
+    "summaryZh": "以 HFSS 建模行波調變器電極並萃取傳播常數。"
+  },
+  {
+    "slug": "license-group",
+    "name": "License Allocation Helper",
+    "nameZh": "授權分配工具",
+    "status": "coming-soon",
+    "summary": "Plan and review Ansys licence allocation across a team.",
+    "summaryZh": "規劃與檢視團隊的 Ansys 授權分配。"
+  }
+]
