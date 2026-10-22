@@ -17,7 +17,7 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
         <ul>
           {dl.files.map((f) => (
             <li>
-              <a class="btn primary" href={f.url}>
+              <a class="button button-primary" href={f.url}>
                 Download 下載 {f.name}
               </a>
               <span class="meta">{mb(f.size)}</span>
@@ -32,7 +32,7 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
       </>
     ) : (
       <>
-        <a class="btn primary" href={url('/trial/')}>
+        <a class="button button-primary" href={url('/trial/')}>
           Request a trial · 申請試用
         </a>
         <p class="meta">
@@ -50,10 +50,8 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
 <style>
   .get-tool {
     margin: 1.25rem 0;
-    padding: 1rem 1.2rem;
-    border: 1px solid var(--sl-color-accent);
-    border-radius: 0.6rem;
-    background: var(--sl-color-accent-low);
+    padding: 1.5rem 0;
+    border-block: 1px solid var(--sl-color-gray-5);
   }
   .get-tool ul {
     list-style: none;
@@ -65,15 +63,6 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
     flex-wrap: wrap;
     gap: 0.75rem;
     align-items: center;
-  }
-  .btn.primary {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 0.4rem;
-    background: var(--sl-color-accent);
-    color: var(--sl-color-black);
-    font-weight: 600;
-    text-decoration: none;
   }
   .meta {
     margin: 0.5rem 0 0;

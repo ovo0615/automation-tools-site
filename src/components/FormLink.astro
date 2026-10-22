@@ -9,42 +9,29 @@ const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 <div class="form-links not-content">
   {
     form ? (
-      <a class="btn primary" href={form}>
+      <a class="button button-primary" href={form}>
         Open the form · 填寫表單
       </a>
     ) : (
-      <span class="btn disabled" aria-disabled="true">
+      <p class="form-status">
         Online form coming soon · 線上表單準備中
-      </span>
+      </p>
     )
   }
-  <a class="btn" href={mailto}>Email {site.email}</a>
+  <a class:list={['button', { 'button-primary': !form }]} href={mailto}>Email {site.email}</a>
 </div>
 
 <style>
   .form-links {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.75rem;
     margin: 1rem 0 1.5rem;
   }
-  .btn {
-    display: inline-block;
-    padding: 0.55rem 1rem;
-    border-radius: 0.4rem;
-    border: 1px solid var(--sl-color-accent);
-    color: var(--sl-color-accent-high);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .btn.primary {
-    background: var(--sl-color-accent);
-    color: var(--sl-color-black);
-  }
-  .btn.disabled {
-    border-style: dashed;
-    border-color: var(--sl-color-gray-4);
+  .form-status {
+    flex-basis: 100%;
+    margin: 0;
     color: var(--sl-color-gray-3);
-    cursor: not-allowed;
   }
 </style>
