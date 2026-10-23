@@ -1,0 +1,34 @@
+---
+title: FAQ & troubleshooting · 常見問題與疑難排解
+description: Confirm installation, licensing, AEDT version and HPC behaviour before reporting a PCB SI problem.
+---
+
+import Link from '../../../../components/Link.astro';
+import KnownIssues from '../../../../components/KnownIssues.astro';
+
+## Installation & runtime · 安裝與執行
+
+| Question | Confirmed guidance | 已確認的處理方式 |
+| --- | --- | --- |
+| Can I run the public Source ZIP? | It lacks the complete backend and launcher. Obtain the complete package through TADC. | 公開 ZIP 不含完整後端與啟動器，請向虎門科技取得完整工具包。 |
+| Why is the first start slow? | The launcher installs the runtime and locked dependencies. Let installation finish and retain the displayed error if it fails. | 首次啟動需安裝執行環境與鎖定套件；等待完成，失敗時保留畫面錯誤。 |
+| WebView2 is missing. | Use the documented external-browser fallback or install Microsoft Edge WebView2 Runtime. | 可使用文件記載的外部瀏覽器模式，或安裝 Microsoft Edge WebView2 Runtime。 |
+| Which AEDT version? | The public prerequisites specify 2026 R1. Confirm compatibility before using another version. | 公開需求指定 2026 R1，其他版本請先確認相容性。 |
+
+## Licences & solving · 授權與求解
+
+| Question | Confirmed guidance | 已確認的處理方式 |
+| --- | --- | --- |
+| Does the tool include Ansys licences? | No. Arrange the licences required for your selected features separately. | 不含 Ansys 授權；各功能所需授權須另備。 |
+| Should I select 4 cores immediately? | HFSS defaults to 12 cores. Use 4 only after an explicit HPC or core-count licence error; keep the original error for support. | HFSS 預設 12 cores，僅遇明確 HPC 或核心授權錯誤才改 4 cores，並保留原始錯誤供支援判讀。 |
+| Where are trial terms? | Confirm them with the complete package supplied by TADC. | 試用條件以虎門科技提供的完整工具包確認。 |
+
+Guidance follows the [public README](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md) and [troubleshooting manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/11-疑難排解.md).
+
+<p class="zh" lang="zh-Hant">處理方式依公開 README 與疑難排解手冊；若錯誤持續，請附重現步驟及檢查過的支援包回報。</p>
+
+<Link to="/tools/pcb-si/bugs/" class="button button-primary">Report a bug · Bug 回報</Link>
+
+## Known issues · 已知問題
+
+<KnownIssues slug="pcb-si" />

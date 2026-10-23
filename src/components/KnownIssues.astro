@@ -1,0 +1,6 @@
+---
+import issues from '../data/known-issues.json';
+const { slug = 'pcb-si' } = Astro.props;
+const entries = issues.filter(i => i.tool === slug);
+---
+{entries.length ? <ul>{entries.map(i => <li><strong>{i.title}</strong><p class="zh" lang="zh-Hant">{i.titleZh}</p><p>{i.description}</p><p class="zh" lang="zh-Hant">{i.descriptionZh}</p><p>Affected versions · 影響版本：{i.versions}</p>{i.source && <a href={i.source}>Details · 詳細資訊</a>}</li>)}</ul> : <p>No confirmed issues have been published here yet. This is not a claim that the tool is free of bugs.<br/><span class="zh" lang="zh-Hant">此處尚未刊登已確認問題，不代表工具沒有 Bug。</span></p>}

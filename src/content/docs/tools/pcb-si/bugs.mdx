@@ -1,0 +1,35 @@
+---
+title: Report a bug · Bug 回報
+description: Report reproducible PCB SI problems using a reviewed support package and redacted steps.
+---
+
+import FormLink from '../../../../components/FormLink.astro';
+import Link from '../../../../components/Link.astro';
+
+Send a reproducible problem through the company form or email. Remove confidential details before submitting.
+
+<p class="zh" lang="zh-Hant">透過公司表單或 Email 回報可重現的問題；送出前移除機密資訊。</p>
+
+<FormLink kind="bug" subject="Bug report: PCB SI 3D Simulation Toolkit" />
+
+## Report details · 回報內容
+
+| Detail | 內容 |
+| --- | --- |
+| Tool version, Windows version, AEDT version | 工具、Windows 與 AEDT 版本 |
+| Numbered steps to reproduce | 可重現的操作步驟 |
+| Expected result and actual result | 預期結果與實際結果 |
+| Exact error and a redacted screenshot | 完整錯誤訊息與已遮蔽機密的截圖 |
+| A reviewed support package, if available | 檢查過的支援包（若可產生） |
+
+## Review the support package · 先檢查支援包
+
+Choose Help → Generate support package (logs & diagnostics), as described in the [public manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/11-疑難排解.md). Open `manifest.json` and inspect the included files before attaching them. The package excludes models, EDB, Touchstone and simulation results, but diagnostic text may still contain paths, names, tokens or licence information.
+
+<p class="zh" lang="zh-Hant">由「說明 → 產生支援包（日誌與診斷）」匯出，先打開 `manifest.json` 並檢查所含檔案。支援包排除模型、EDB、Touchstone 與求解結果，但診斷文字仍可能含路徑、名稱、token 或授權資訊。</p>
+
+**Do not upload customer designs, confidential data or an unchecked support package.** If you cannot safely remove sensitive details, email only the redacted steps and ask how to proceed.
+
+<p class="zh" lang="zh-Hant">**不要上傳客戶設計檔、機密資料或未檢查的支援包。** 無法安全移除敏感內容時，只寄已去識別的重現步驟，另洽支援方式。</p>
+
+<Link to="/tools/pcb-si/faq/">Check known issues first · 先查已知問題</Link>

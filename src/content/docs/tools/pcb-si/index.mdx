@@ -3,7 +3,7 @@ title: PCB SI 3D Simulation Toolkit
 description: Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and cross-section impedance.
 ---
 
-import GetTool from '../../../../components/GetTool.astro';
+import ToolNav from '../../../../components/ToolNav.astro';
 import Link from '../../../../components/Link.astro';
 
 export const IMG = 'https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph';
@@ -18,7 +18,9 @@ cross-section impedance as needed — driving Ansys HFSS 3D Layout, SIwave and C
   Ansys HFSS 3D Layout、SIwave 與 Circuit。
 </p>
 
-<GetTool slug="pcb-si" />
+<div class="cta not-content"><Link to="/tools/pcb-si/quick-start/" class="button button-primary">Quick start · 快速開始</Link></div>
+
+<ToolNav slug="pcb-si" />
 
 ## What it does
 
@@ -35,7 +37,7 @@ cross-section impedance as needed — driving Ansys HFSS 3D Layout, SIwave and C
 | Single-file HTML report with snapshots                                  | 一鍵單檔 HTML 報告                     |
 
 Some features are marked **Beta** in the tool: usable, with fewer validation cases. Full details are in the
-[public manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md) (Traditional Chinese).
+[public manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/tree/main/docs/manual) (Traditional Chinese).
 
 <p class="zh">部分功能在工具內標示 Beta：可以使用，但驗證案例較少。完整說明見公開操作手冊。</p>
 

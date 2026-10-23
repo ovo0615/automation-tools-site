@@ -1,0 +1,11 @@
+---
+import wishes from '../data/wishes.json';
+const { slug = 'pcb-si' } = Astro.props;
+const states = [ ['received','Received','已收到'], ['evaluating','Evaluating','評估中'], ['planned','Planned','規劃中'], ['completed','Completed','已完成'] ];
+---
+<section aria-label="Public roadmap · 公開路線圖">
+{states.map(([key,en,zh]) => {
+ const entries = wishes.filter(w => w.tool === slug && w.status === key);
+ return <section><h3>{en} · {zh}</h3>{entries.length ? <ul>{entries.map(w => <li><strong>{w.title}</strong><p class="zh" lang="zh-Hant">{w.titleZh}</p>{w.note && <p>{w.note}</p>}</li>)}</ul> : <p>No published entries. · 尚無公開項目。</p>}</section>;
+})}
+</section>

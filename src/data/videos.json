@@ -1,0 +1,5 @@
+[
+  { "tool": "pcb-si", "youtubeId": "0q0fQNSyg-E", "title": "Part 1: Channel preparation & backdrill", "titleZh": "上集：通道準備與背鑽", "kind": "workflow-demonstration" },
+  { "tool": "pcb-si", "youtubeId": "TytVuKnlkaQ", "title": "Part 2: Segmented solve", "titleZh": "中集：切三段求解", "kind": "workflow-demonstration" },
+  { "tool": "pcb-si", "youtubeId": "BxRJz8CuXBU", "title": "Part 3: Eye diagrams & TDR location", "titleZh": "下集：眼圖與 TDR 阻抗定位", "kind": "workflow-demonstration" }
+]

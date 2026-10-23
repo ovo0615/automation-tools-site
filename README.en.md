@@ -20,6 +20,16 @@ Built with Astro Starlight and deployed to GitHub Pages.
 | Pages | `src/content/docs/` |
 | Release notes, download button | Each tool's **public** repository: `CHANGELOG.md` (`## v…` sections only) and GitHub Releases, fetched at build time |
 | Contact and form links | `src/data/site.json` |
+| Shared tool navigation | `src/data/tool-navigation.json` |
+| Public videos | `src/data/videos.json`: `tool`, `youtubeId`, `title`, `titleZh`, `kind` |
+| Requests and public roadmap | `src/data/wishes.json`: `id`, `tool`, `title`, `titleZh`, `status` |
+| Known issues | `src/data/known-issues.json`: `id`, `tool`, `title`, `titleZh`, `description`, `descriptionZh`, `versions`; optional `source` |
+
+Request states: `received`, `evaluating`, `planned`, `completed`. Empty lists show an honest empty state. Never add fictional requests or reviews.
+
+The `trial`, `bug`, `wish` and `feedback` form keys accept company Microsoft Forms HTTPS URLs. Keep `null` until ready; pages offer email and a form-coming-soon message. The build rejects other form hosts, malformed video IDs, duplicates and missing content.
+
+Add verified public videos through the data file only. Distinguish workflow demonstrations from current-interface tutorials. The YouTube iframe is created only after a play click.
 
 ## Guard
 

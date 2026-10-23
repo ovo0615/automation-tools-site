@@ -1,0 +1,19 @@
+---
+import entries from '../data/tool-navigation.json';
+import { url } from '../lib/url';
+const { slug = 'pcb-si' } = Astro.props;
+---
+<nav class="tool-nav not-content" aria-label="Tool resources · 工具資源">
+  <ul>{entries.map(e => <li><a href={url(`/tools/${slug}/${e.path}/`)}>{e.label}<span lang="zh-Hant">{e.zh}</span></a></li>)}</ul>
+  <p><a href={url(`/tools/${slug}/requirements/`)}>Requirements & trial · 系統需求與試用</a><a href={url(`/tools/${slug}/privacy/`)}>Data & privacy · 資料與隱私</a><a href={url(`/tools/${slug}/support/`)}>Contact & support · 聯絡支援</a></p>
+</nav>
+<style>
+ .tool-nav { margin-block: 1.5rem 2rem; }
+ ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); column-gap: 2rem; }
+ li { border-bottom: 1px solid var(--sl-color-gray-5); }
+ li a { display: flex; flex-wrap: wrap; gap: 0.1rem 0.75rem; padding-block: 0.65rem; min-height: 44px; align-items: center; }
+ span { color: var(--sl-color-gray-3); font-size: 0.95em; }
+ p { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-block: 1rem 0; font-size: 0.95rem; }
+ p a { padding-block: 0.4rem; }
+ @media (max-width: 35rem) { ul { grid-template-columns: 1fr; } }
+</style>

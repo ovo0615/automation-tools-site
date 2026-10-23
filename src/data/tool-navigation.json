@@ -1,0 +1,10 @@
+[
+  { "path": "quick-start", "label": "Quick start", "zh": "快速開始" },
+  { "path": "manual", "label": "Manual", "zh": "操作說明" },
+  { "path": "videos", "label": "Videos", "zh": "操作影片" },
+  { "path": "faq", "label": "FAQ & troubleshooting", "zh": "常見問題與疑難排解" },
+  { "path": "bugs", "label": "Report a bug", "zh": "Bug 回報" },
+  { "path": "wishlist", "label": "Feature requests", "zh": "功能許願池" },
+  { "path": "feedback", "label": "Feedback", "zh": "用戶回饋" },
+  { "path": "changelog", "label": "Release notes", "zh": "版本與更新紀錄" }
+]

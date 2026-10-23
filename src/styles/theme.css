@@ -41,6 +41,7 @@ site-search button[data-open-modal], site-search button[data-close-modal] {
   outline-offset: 4px;
 }
 a {
+  color: var(--sl-color-accent-high);
   text-underline-offset: 0.2em;
 }
 a:hover {

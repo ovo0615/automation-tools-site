@@ -4,6 +4,8 @@
   "email": "jeff.hong@cadmen.com",
   "forms": {
     "trial": null,
-    "feedback": null
+    "feedback": null,
+    "bug": null,
+    "wish": null
   }
 }

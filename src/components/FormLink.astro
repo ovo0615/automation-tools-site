@@ -1,7 +1,7 @@
 ---
 import site from '../data/site.json';
 // kind: which Microsoft Forms link from site.json. Until Jeff creates the form, only the email route is live.
-const { kind, subject } = Astro.props as { kind: 'trial' | 'feedback'; subject: string };
+const { kind, subject } = Astro.props as { kind: 'trial' | 'feedback' | 'bug' | 'wish'; subject: string };
 const form = site.forms[kind] as string | null;
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 ---

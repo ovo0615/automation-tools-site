@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import toolNavigation from './src/data/tool-navigation.json' with { type: 'json' };
 
 // GitHub Pages project site: https://<owner>.github.io/<repo>/ . Both are overridable in CI.
 const site = process.env.SITE_URL ?? 'https://ovo0615.github.io';
@@ -30,12 +31,12 @@ export default defineConfig({
           label: 'PCB SI 3D Simulation Toolkit · PCB SI 工具',
           items: [
             { label: 'Overview · 介紹', link: '/tools/pcb-si/' },
-            { label: 'Release notes · 版本更新', link: '/tools/pcb-si/changelog/' },
+            ...toolNavigation.map(e => ({ label: `${e.label} · ${e.zh}`, link: `/tools/pcb-si/${e.path}/` })),
+            { label: 'Requirements & trial · 系統需求與試用', link: '/tools/pcb-si/requirements/' },
+            { label: 'Data & privacy · 資料與隱私', link: '/tools/pcb-si/privacy/' },
+            { label: 'Contact & support · 聯絡支援', link: '/tools/pcb-si/support/' },
           ],
         },
-        { label: 'All release notes · 全部版本', link: '/changelog/' },
-        { label: 'Request a trial · 申請試用', link: '/trial/' },
-        { label: 'Feedback · 回饋', link: '/feedback/' },
         { label: 'About · 關於', link: '/about/' },
       ],
     }),
