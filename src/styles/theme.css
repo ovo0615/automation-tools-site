@@ -47,6 +47,10 @@ a {
 a:hover {
   color: var(--sl-color-white);
 }
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover {
+  color: var(--sl-color-black);
+}
 h1, h2, h3 {
   text-wrap: balance;
   overflow-wrap: break-word;

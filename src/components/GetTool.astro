@@ -12,7 +12,7 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
     dl.kind === 'download' ? (
       <>
         <p>
-          Latest release <strong>{dl.tag}</strong> · 最新版本
+          Public repository release <strong>{dl.tag}</strong> · 公開 repo 版本
         </p>
         <ul>
           {dl.files.map((f) => (
@@ -36,11 +36,11 @@ const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
           Request a trial · 申請試用
         </a>
         <p class="meta">
-          {dl.tag ? `Latest release ${dl.tag} has no downloadable package. ` : 'No release has been published yet. '}
+          {dl.tag ? `Public repository release ${dl.tag} has no downloadable package. ` : 'No public repository release has been published yet. '}
           The complete tool is provided through TADC.
         </p>
         <p class="meta zh">
-          {dl.tag ? `最新版本 ${dl.tag} 未附安裝檔；` : '尚未發布版本；'}完整工具透過虎門科技（TADC）提供。
+          {dl.tag ? `公開 repo 版本 ${dl.tag} 未附安裝檔；` : '公開 repo 尚未發布版本；'}完整工具透過虎門科技（TADC）提供。
         </p>
       </>
     )
