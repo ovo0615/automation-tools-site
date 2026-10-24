@@ -1,0 +1,82 @@
+{
+  "19-S02_received_files.png": {
+    "width": 750,
+    "height": 140
+  },
+  "19-S16_hash_check.png": {
+    "width": 1602,
+    "height": 640
+  },
+  "19-S17a_smartscreen.png": {
+    "width": 542,
+    "height": 508
+  },
+  "19-S17b_smartscreen_run_anyway.png": {
+    "width": 542,
+    "height": 508
+  },
+  "19-S05_select_folder.png": {
+    "width": 616,
+    "height": 482
+  },
+  "19-S01_task_picker.png": {
+    "width": 1920,
+    "height": 1080
+  },
+  "19-S07a_help_menu.png": {
+    "width": 530,
+    "height": 230
+  },
+  "19-S11_ansys_license_table.png": {
+    "width": 475,
+    "height": 810
+  },
+  "19-S09a_import_button.png": {
+    "width": 980,
+    "height": 244
+  },
+  "19-S12b_view_menu.png": {
+    "width": 720,
+    "height": 502
+  },
+  "19-S14_result_tabs.png": {
+    "width": 1920,
+    "height": 1080
+  },
+  "19-S15b_support_bundle.png": {
+    "width": 656,
+    "height": 419
+  },
+  "20-S02_b_path_filled.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S03_nets_selected.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S05_a_extent_params.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S06_b_cut_layout.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S08_a_sweep.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S09_b_ports_created.png": {
+    "width": 704,
+    "height": 308
+  },
+  "20-S09_c_cut_layout_with_ports.png": {
+    "width": 1920,
+    "height": 1053
+  },
+  "20-S10_b_after_no_split.png": {
+    "width": 1878,
+    "height": 602
+  }
+}

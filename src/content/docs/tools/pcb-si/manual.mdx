@@ -1,32 +1,110 @@
 ---
 title: Manual · 操作說明
-description: Find PCB SI instructions by task, linked to the maintained public manual.
+description: Prepare a PCB SI channel with board loading, cutout, ports, frequency and whole-board segmentation.
 ---
 
-Open the chapter for your task. These links lead to the maintained public repository; screenshots may differ between releases.
+import Link from '../../../../components/Link.astro';
+import ManualShot from '../../../../components/ManualShot.astro';
 
-<p class="zh" lang="zh-Hant">依功能開啟公開 repo 的操作章節。不同版本的畫面可能不同。</p>
+This walkthrough covers preparation through the unsegmented channel, using the v1.0.3 interface captured for EP20. Solver assignment and the solve-to-results workflow will be added in the next version.
 
-## Chapters · 功能章節
+<p class="zh" lang="zh-Hant">本頁依 EP20 的 v1.0.3 實拍，完成載板、裁切、Port、頻率與不分割設定；指定 SIwave 及後續求解流程下一版補上。點圖片可看原尺寸。</p>
 
-The linked chapters are in Traditional Chinese. English chapters are being prepared.
+<Link to="/tools/pcb-si/quick-start/" class="button button-primary">Install & activate first · 先完成安裝與授權</Link>
 
-<p class="zh" lang="zh-Hant">以下連結為繁體中文章節，英文版撰寫中。</p>
+## 1. Load a board · 載入電路板
 
-| Task · 功能 | Public chapter · 公開章節 |
+Prepare non-confidential board data and the required Ansys environment. **The v1.0.3 installer does not include an example `.aedb`.** Obtain suitable example data separately. Use ASCII-only source and working paths, including all parent folders.
+
+<p class="zh" lang="zh-Hant">準備不涉機密的板檔與所需 Ansys 環境。**v1.0.3 安裝包未內附範例 `.aedb`**，範例資料須另備；來源與工作資料夾的完整路徑均使用 ASCII。</p>
+
+At the task picker, select board import, cutout, Port setup and segmentation as needed, then press **「開始」**. Beside the input field, press **「瀏覽…」** to choose the board, then **「載入電路板」**. The screenshot shows the selected path after returning to the tool.
+
+<p class="zh" lang="zh-Hant">在任務入口選取載板、裁切、Port 與分段所需項目後按「開始」。在輸入檔案欄旁按「瀏覽…」選板檔，再按「載入電路板」。圖中是選取後回到工具的畫面。</p>
+
+<ManualShot file="20-S02_b_path_filled.png" alt="Board input after selection and the 載入電路板 button, with its local path removed" caption="Choose the board using Browse, then load it." zh="按「瀏覽…」選檔，再按「載入電路板」；本機路徑已遮蔽。" />
+
+## 2. Select nets · 選擇網路
+
+In **「選擇網路（Nets）」**, filter the available nets and add the required signals and references. This example selects `ST_CTL` and `ST_ERROR` as signals, with `GND` as the reference. Use your board's own net names.
+
+<p class="zh" lang="zh-Hant">在「選擇網路（Nets）」篩選並加入訊號與參考網路。本次示範訊號是 `ST_CTL`、`ST_ERROR`，參考為 `GND`；自己的板子依實際網路名稱選取。</p>
+
+<ManualShot file="20-S03_nets_selected.png" alt="Net selection with ST_CTL and ST_ERROR as signals and GND as reference" caption="Check signals and references before cutting." zh="確認訊號與參考網路分別放入正確清單。" />
+
+The **「完整 Layout」** tab shows the original board. **「裁切後 Layout」** displays the cutout after it has been generated; changing tabs does not run the cutout.
+
+<p class="zh" lang="zh-Hant">「完整 Layout」顯示原始板；產生裁切結果後再用「裁切後 Layout」查看。切換頁籤本身不會執行裁切。</p>
+
+## 3. Preview and cut · 預覽與裁切
+
+Under **「裁切設定」**, the demonstration uses **「外擴距離（mm）」＝5** and **「框選範圍形狀」＝「貼合走線（Conforming）」**. Press **「分析精確裁切外框」** to inspect the proposed boundary before cutting.
+
+<p class="zh" lang="zh-Hant">在「裁切設定」將「外擴距離（mm）」設為 5，「框選範圍形狀」選「貼合走線（Conforming）」，按「分析精確裁切外框」查看外框。這是本次示範值，請依板檔調整。</p>
+
+<ManualShot file="20-S05_a_extent_params.png" alt="Cutout settings with 5 mm expansion, Conforming and the precise-boundary preview button" caption="Preview the cutout boundary before creating the output." zh="先核對 5 mm 與 Conforming，再預覽外框。" />
+
+Choose the cutout destination with **「瀏覽…」**, then press **「執行裁切」**. In **「裁切後 Layout」**, check that both selected signals and their reference conductors remain.
+
+<p class="zh" lang="zh-Hant">由「瀏覽…」選擇裁切輸出位置，按「執行裁切」。完成後在「裁切後 Layout」確認兩條訊號及參考導體均保留。</p>
+
+<ManualShot file="20-S06_b_cut_layout.png" alt="Cropped channel displayed in the 裁切後 Layout tab" caption="Inspect the generated channel before configuring ports." zh="先檢查裁切結果，再設定 Port。" />
+
+## 4. Ports and frequency · Port 與頻率
+
+In **「Port 設定」**, keep the shown automatic **「Port 類型」** and confirm the two endpoint components are selected: `U14` and `U22` in this example. They were already checked before **「建議端點（最多 2 個）」** was pressed.
+
+<p class="zh" lang="zh-Hant">在「Port 設定」保留圖示的自動「Port 類型」，核對兩端元件。示範中 U14、U22 原本就已勾選；按「建議端點（最多 2 個）」前後勾選狀態相同。</p>
+
+Under **「模擬設定」**, choose **「選擇規範」→「自訂頻率」** and set **「最高掃頻頻率（GHz）」** to **20**. Confirm the three-part summary beneath it.
+
+<p class="zh" lang="zh-Hant">在「模擬設定」的「選擇規範」選「自訂頻率」，「最高掃頻頻率（GHz）」填 20，核對下方三段式摘要。</p>
+
+| Range · 範圍 | Sweep · 掃頻 |
 | --- | --- |
-| First run · 第一次跑通 | [First run · 第一次跑](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/00-第一次跑.md) |
-| Installation · 安裝 | [Getting started · 開始使用](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/01-開始使用.md) |
-| Cutout · 裁切 | [Load & cutout · 載入與裁切](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/02-載入與裁切.md) |
-| Port setup & solver settings · Port 與求解設定 | [Port & solver setup · Port 與求解設定](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/03-Port與求解設定.md) |
-| Segmentation · 分段 | [Segmentation & mixed solving · 分段與混合求解](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/04-分段與混合求解.md) |
-| Solve & cascade · 求解與串接 | [Schedule & cascade · 排程與串接](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/05-排程與串接.md) |
-| Eye diagrams · 眼圖 | [IBIS & eyes · IBIS 與眼圖](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/06-IBIS與眼圖.md) |
-| TDR · 阻抗與定位 | [TDR location · TDR 定位](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/07-TDR定位.md) |
-| Cross-section impedance · 截面阻抗 | [Cross-section impedance · 截面阻抗](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/08-截面阻抗.md) |
-| Reports · 報告 | [Reports & output · 報告與輸出](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/09-報告與輸出.md) |
-| Troubleshooting · 疑難排解 | [Troubleshooting · 疑難排解](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/11-疑難排解.md) |
+| 0 Hz～1 Hz | 2 points：0 Hz and 1 Hz · 2 點 |
+| 1 Hz～100 MHz | Log scale，20 points per decade · 每 decade 20 點 |
+| 100 MHz～20 GHz | Linear step，0.05 GHz · 每 50 MHz 一點 |
 
-## More chapters · 其他章節
+<ManualShot file="20-S08_a_sweep.png" alt="Port settings with U14 and U22 selected, custom 20 GHz frequency and three-part sweep summary" caption="Check endpoints and the frequency summary together." zh="同時核對端點、20 GHz 與三段式掃頻摘要。" />
 
-[Other workflows · 其他工作模式](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/10-其他工作模式.md)
+## 5. Create ports · 建立 Port
+
+Choose the output destination, then press **「建立 Port 並套用求解器設定」**. The completion dialog reports **4 ports** for this example. Press **「確定」** and inspect the port markers in **「裁切後 Layout」**.
+
+<p class="zh" lang="zh-Hant">選好輸出位置後，按「建立 Port 並套用求解器設定」。本例完成對話框顯示建立 4 個 Port；按「確定」，回「裁切後 Layout」核對 Port 標記。</p>
+
+<ManualShot file="20-S09_b_ports_created.png" alt="Completion dialog reporting four created ports with its output path removed" caption="The completion dialog confirms the number of ports." zh="完成對話框確認本例已建立 4 個 Port。" />
+
+<ManualShot file="20-S09_c_cut_layout_with_ports.png" alt="Cutout Layout with endpoint Port labels at U14 and U22" caption="Verify endpoint markers on the channel." zh="在 Layout 核對 U14 與 U22 兩端的 Port 標記。" />
+
+**v1.0.3 has no Port table.** Check the completion dialog and Layout labels here. Port-name and order verification in the wiring view will be documented with the later cascade workflow.
+
+<p class="zh" lang="zh-Hant">**v1.0.3 沒有 Port 表格。** 此處先核對完成對話框與 Layout 標記；接線圖中的 Port 名稱及順序，等後續串接操作說明補上。</p>
+
+## 6. Start without splitting · 先不分割
+
+In **「N 段分割」**, choose **「不分割 · 整片求解」** for the first preparation run. The result reports **1 segment** and **0 cut-plane Port groups**. Endpoint ports come from the preceding Port step.
+
+<p class="zh" lang="zh-Hant">在「N 段分割」按「不分割 · 整片求解」，先用整片通道作為基準。圖中產生 1 段、切面 Port 配對 0 組；兩端 Port 沿用前一步。</p>
+
+<ManualShot file="20-S10_b_after_no_split.png" alt="Unsegmented channel with one segment and zero cut-plane Port pairs" caption="Preparation stops at the unsegmented channel." zh="本頁停在不分割結果；指定求解器與執行求解尚未涵蓋。" />
+
+## Next version · 下一版補上
+
+| Chapter · 章節 | Status · 狀態 |
+| --- | --- |
+| SIwave assignment, cores and scheduling · 指定 SIwave、核心數與排程 | Next version · 下一版補上 |
+| Solve, cascade and S-parameters · 求解、串接與 S 參數 | Next version · 下一版補上 |
+| Run history and output folder · 執行歷史與輸出資料夾 | Next version · 下一版補上 |
+| Segmented solving, TDR, eyes, cross-section impedance and reports · 分段求解、TDR、眼圖、截面阻抗與報告 | Documentation in preparation · 撰寫中 |
+
+## Support package · 支援包
+
+For a reproducible error, open **「說明」→「產生支援包（日誌與診斷）」**. The default package is encrypted. Also save a plain-text review copy and check its contents before sharing. Do not send customer designs or unchecked diagnostics.
+
+<p class="zh" lang="zh-Hant">遇到可重現的錯誤，由「說明」→「產生支援包（日誌與診斷）」匯出。預設支援包加密；另存明文審閱版檢查內容，再決定分享項目。不要傳送客戶設計檔或未檢查的診斷資訊。</p>
+
+<ManualShot file="19-S15b_support_bundle.png" alt="支援包 dialog showing encryption and plain-text review options" caption="Review diagnostic contents before sending a support package." zh="支援包預設加密；另存明文審閱版檢查敏感資訊。" />
+
+<Link to="/tools/pcb-si/bugs/">Report a reproducible problem · 回報可重現問題</Link>

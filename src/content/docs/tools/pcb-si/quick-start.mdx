@@ -1,28 +1,105 @@
 ---
 title: Quick start · 快速開始
-description: Get the complete PCB SI package, check prerequisites and run a first example.
+description: Install PCB SI, verify the package and activate a machine-bound trial with the EP19 walkthrough.
 ---
 
 import GetTool from '../../../../components/GetTool.astro';
 import Link from '../../../../components/Link.astro';
+import ManualShot from '../../../../components/ManualShot.astro';
 
-Start with the complete package supplied through TADC. The public repository contains documentation, front-end assets and demonstration data; its Source ZIP cannot run the complete workflow.
+Install the complete package supplied through TADC, activate it on the intended computer, then follow this site's board preparation instructions. Screenshots show the v1.0.3rc delivery interface; select an image to view it at full size.
 
-<p class="zh" lang="zh-Hant">請使用虎門科技提供的完整工具包。公開 repo 只有文件、前端與展示資料，Source ZIP 無法執行完整流程。</p>
+<p class="zh" lang="zh-Hant">向虎門科技取得完整安裝包，在要使用的電腦完成授權，再依本站操作說明準備第一個通道。畫面採用 v1.0.3rc 交貨版實拍；點圖片可看原尺寸。</p>
 
 <GetTool slug="pcb-si" />
 
-## First run in four steps · 四步開始
+## Before you begin · 開始前
 
-| Step | Action | 操作 |
-| --- | --- | --- |
-| 1 | Obtain the complete package or request a trial above. | 取得完整工具包，或由上方申請試用。 |
-| 2 | Check Windows, AEDT, Python and licence requirements below. | 核對下方系統與授權需求。 |
-| 3 | Extract the complete package and run `web_app/start.bat`. Allow the first dependency installation to finish. | 解壓完整工具包，執行 `web_app/start.bat`，等待首次相依套件安裝完成。 |
-| 4 | Follow the public manual with non-confidential example data: import a board, select nets, preview a cutout, then configure ports and solve. | 依公開手冊使用不涉機密的範例資料：匯入板檔、選網路、預覽裁切，再設定 Port 與求解。 |
+| Required component | Purpose · 用途 |
+| --- | --- |
+| Windows 10／11 x64 | Tool host · 工具執行環境 |
+| Complete installer, `SHA256SUMS.txt`, installation guide and licence document | Obtain the complete delivery from TADC · 向虎門科技取得完整交付檔 |
+| Ansys Electronics Desktop 2026 R1 and relevant licences | Layout preparation and simulation · Layout 前處理與求解；Ansys 授權另備 |
+| Included runtime components | Bundled in the installer; no separate Python installation · 所需元件已含在安裝包內，不需另裝 Python |
 
-<Link to="/tools/pcb-si/requirements/">Requirements & trial · 系統需求與試用</Link> · <Link to="/tools/pcb-si/manual/">Open the manual · 操作說明</Link>
+<Link to="/tools/pcb-si/requirements/">Runtime and dependency details · 執行環境與相依套件</Link>
 
-Detailed instructions and example prerequisites are in the [first-run manual](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/docs/manual/00-第一次跑.md).
+## 1. Install · 安裝
 
-<p class="zh" lang="zh-Hant">首次操作的詳細步驟與範例需求以公開手冊為準；未完成 Port 與授權檢查前，先停在預覽。</p>
+Check the installer filename against `SHA256SUMS.txt`. Run this command in PowerShell from the delivery folder and compare the complete SHA-256 value. Use the filename for your delivered version.
+
+<p class="zh" lang="zh-Hant">在交付資料夾用 PowerShell 核對 SHA-256，整串數值須與附檔一致。下例檔名對應實拍版本；收到其他版本時改用該版檔名。</p>
+
+```powershell
+Get-FileHash ./PCBSI-Setup-v1.0.3.exe -Algorithm SHA256
+```
+
+<ManualShot file="19-S02_received_files.png" alt="Four delivery files including the installer and SHA256SUMS.txt" caption="Check that all delivery files are present." zh="核對安裝檔、雜湊清單、安裝說明與授權文件。" />
+
+<ManualShot file="19-S16_hash_check.png" alt="PowerShell SHA256 output and matching checksum file, with local paths removed" caption="Compare the complete hash for the same installer version." zh="核對同一版安裝檔的完整雜湊值；圖中路徑已遮蔽。" />
+
+This unsigned version displays Windows SmartScreen. Proceed only after confirming the package came from TADC and its hash matches. Select **「其他資訊」**, then **「仍要執行」**. If the source or hash is uncertain, stop and contact support.
+
+<p class="zh" lang="zh-Hant">實拍版本未數位簽章。確認來源為虎門科技且雜湊一致後，才按「其他資訊」→「仍要執行」。來源或雜湊有疑問時，停止安裝並聯絡支援。</p>
+
+<ManualShot file="19-S17a_smartscreen.png" alt="Windows SmartScreen showing its information link" caption="Open the SmartScreen details." zh="按「其他資訊」查看安裝程式資訊。" />
+
+<ManualShot file="19-S17b_smartscreen_run_anyway.png" alt="Windows SmartScreen with the 仍要執行 button" caption="Continue only after verifying the source and hash." zh="來源與雜湊核對無誤後，按「仍要執行」。" />
+
+Read the licence agreement and decide whether to accept it. The desktop shortcut is optional. Check **「準備安裝」**, select **「安裝」**, and wait for completion. Use ASCII-only installation and working paths, including every parent folder.
+
+<p class="zh" lang="zh-Hant">閱讀授權合約，自行決定是否同意；桌面捷徑為選用。在「準備安裝」核對後按「安裝」，等待完成。安裝與工作資料夾的完整路徑均使用英文字母、數字、底線或連字號。</p>
+
+<ManualShot file="19-S05_select_folder.png" alt="Installer 準備安裝 page and 安裝 button, with destination path removed" caption="Review the destination before installing." zh="核對目的資料夾後按「安裝」；圖中完整路徑已遮蔽。" />
+
+## 2. First launch · 首次啟動
+
+Launch the tool from the Windows Start menu. Wait for startup without opening it again. At the task picker, select the tasks you need and press **「開始」**. Check the version under **「說明」→「關於本工具」**.
+
+<p class="zh" lang="zh-Hant">從 Windows 開始功能表啟動，等待完成，不要重複開啟。在任務入口勾選項目，按「開始」；由「說明」→「關於本工具」確認版本。</p>
+
+<ManualShot file="19-S01_task_picker.png" alt="PCB SI task picker with preparation, analysis and results tasks and the 開始 button" caption="Choose the tasks needed for this session." zh="任務入口分為準備、前處理（Beta）、分析與結果。" />
+
+## 3. Check Ansys licences · Ansys 授權對照
+
+Open **「說明」→「Ansys 授權對照與可用數量」**. The dialog is titled **「Ansys 授權對照與目前可用數量」**. The upper section handles the PCB SI product licence; the lower section maps Ansys functions to products. These licences are separate.
+
+<p class="zh" lang="zh-Hant">開啟「說明」→「Ansys 授權對照與可用數量」，視窗標題為「Ansys 授權對照與目前可用數量」。上方是 PCB SI 產品授權，下方是 Ansys 功能與產品對照，兩者須分開準備。</p>
+
+<ManualShot file="19-S07a_help_menu.png" alt="說明 menu with the Ansys licence comparison entry" caption="Open the licence comparison from Help." zh="從「說明」進入 Ansys 授權對照。" />
+
+<ManualShot file="19-S11_ansys_license_table.png" alt="Ansys licence mapping showing only function and product columns" caption="Match the required function to its Ansys product." zh="依功能核對 Ansys 產品；圖中不顯示 feature 名稱與可用數量。" />
+
+## 4. Export a request · 匯出授權申請檔
+
+In **「PCB SI 產品授權」**, select **「匯出授權申請檔」**, choose a save location and send the request file to the trial contact. Export it on the computer that will run the tool; the licence is bound to that machine.
+
+<p class="zh" lang="zh-Hant">在「PCB SI 產品授權」按「匯出授權申請檔」，選擇存放位置，再將申請檔寄給試用窗口。請在實際使用的電腦匯出，授權綁定該台電腦。</p>
+
+<ManualShot file="19-S09a_import_button.png" alt="PCB SI product licence panel with 匯出授權申請檔 and 瀏覽並匯入授權檔" caption="Export the request from the product licence section." zh="產品授權區提供申請檔匯出與授權檔匯入。" />
+
+## 5. Import the licence · 匯入授權檔
+
+After receiving the licence, use **「瀏覽並匯入授權檔」→「選擇檔案」** in the same panel. Wait for verification, then check the licence name and UTC expiry time. Existing data can still be viewed and saved after expiry.
+
+<p class="zh" lang="zh-Hant">收到授權檔後，在同一區的「瀏覽並匯入授權檔」按「選擇檔案」。等待驗證，確認授權名稱及到期時間（UTC）；到期後仍可存檔與查看既有資料。</p>
+
+From **v1.0.4**, the trial lasts **14 days** and is bound to one computer. The screenshots document the earlier v1.0.3rc interface; confirm the delivered package and licence expiry.
+
+<p class="zh" lang="zh-Hant">**v1.0.4 起試用 14 天、單機綁定。** 圖片記錄 v1.0.3rc 介面；實際交付版本與到期時間請依工具包及授權檔確認。</p>
+
+## 6. Interface tour · 介面導覽
+
+| Area · 區域 | Action · 操作 |
+| --- | --- |
+| 「檔案」、「執行」、「檢視」、「說明」 | Main menus · 上方主要選單 |
+| 「檢視」 | Change language or mm／mil units · 切換語言與長度單位 |
+| 「調整項目」 | Return to task selection · 回任務入口調整項目 |
+| Right-side tabs · 右側分頁 | Results follow selected tasks · 分頁依勾選任務出現 |
+| 「系統日誌」 | Inspect progress and errors · 查看進度與完整錯誤 |
+
+<ManualShot file="19-S12b_view_menu.png" alt="檢視 menu showing language and length-unit options" caption="Language and length units are under View." zh="由「檢視」切換語言與 mm／mil。" />
+
+<ManualShot file="19-S14_result_tabs.png" alt="PCB SI main window with left workflow controls, right result tabs and system log" caption="Workflow controls are on the left; results and logs are on the right." zh="左側設定流程，右側查看結果分頁與系統日誌。" />
+
+<Link to="/tools/pcb-si/manual/">Continue with your first board · 開始載板、裁切與 Port 設定</Link>

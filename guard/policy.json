@@ -4,6 +4,26 @@
   "approvedImages": [
     "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-15b-segment-overlays.png",
     "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-17b-whole-board-preview.png",
-    "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-14-solve-profile.png"
+    "https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-14-solve-profile.png",
+    "/automation-tools-site/manual/pcb-si/19-S02_received_files.png",
+    "/automation-tools-site/manual/pcb-si/19-S16_hash_check.png",
+    "/automation-tools-site/manual/pcb-si/19-S17a_smartscreen.png",
+    "/automation-tools-site/manual/pcb-si/19-S17b_smartscreen_run_anyway.png",
+    "/automation-tools-site/manual/pcb-si/19-S05_select_folder.png",
+    "/automation-tools-site/manual/pcb-si/19-S01_task_picker.png",
+    "/automation-tools-site/manual/pcb-si/19-S07a_help_menu.png",
+    "/automation-tools-site/manual/pcb-si/19-S11_ansys_license_table.png",
+    "/automation-tools-site/manual/pcb-si/19-S09a_import_button.png",
+    "/automation-tools-site/manual/pcb-si/19-S12b_view_menu.png",
+    "/automation-tools-site/manual/pcb-si/19-S14_result_tabs.png",
+    "/automation-tools-site/manual/pcb-si/19-S15b_support_bundle.png",
+    "/automation-tools-site/manual/pcb-si/20-S02_b_path_filled.png",
+    "/automation-tools-site/manual/pcb-si/20-S03_nets_selected.png",
+    "/automation-tools-site/manual/pcb-si/20-S05_a_extent_params.png",
+    "/automation-tools-site/manual/pcb-si/20-S06_b_cut_layout.png",
+    "/automation-tools-site/manual/pcb-si/20-S08_a_sweep.png",
+    "/automation-tools-site/manual/pcb-si/20-S09_b_ports_created.png",
+    "/automation-tools-site/manual/pcb-si/20-S09_c_cut_layout_with_ports.png",
+    "/automation-tools-site/manual/pcb-si/20-S10_b_after_no_split.png"
   ]
 }

@@ -1,0 +1,19 @@
+---
+import images from '../data/manual-images.json';
+import { url } from '../lib/url';
+const { file, alt, caption, zh } = Astro.props as { file: keyof typeof images; alt: string; caption: string; zh: string };
+const dimensions = images[file];
+if (!dimensions) throw new Error(`Unknown manual image: ${file}`);
+const src = url(`/manual/pcb-si/${file}`);
+---
+<figure class="manual-shot">
+  <a href={src} aria-label={`Open full-size image · 開啟原尺寸圖片：${alt}`}>
+    <img class="shot" src={src} {...dimensions} alt={alt} loading="lazy" decoding="async" />
+  </a>
+  <figcaption>{caption}<br /><span lang="zh-Hant">{zh}</span></figcaption>
+</figure>
+<style>
+  .manual-shot { margin-block: 1.5rem 2rem; }
+  .manual-shot a { display: block; }
+  .manual-shot figcaption { margin-top: 0.5rem; color: var(--sl-color-gray-2); font-size: 0.9375rem; line-height: 1.6; }
+</style>

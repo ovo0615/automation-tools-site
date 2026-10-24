@@ -11,18 +11,16 @@ import Link from '../../../../components/Link.astro';
 | --- | --- | --- |
 | Windows 10/11 x64 | Tool host | 工具執行環境 |
 | Ansys Electronics Desktop 2026 R1 | Simulation; the relevant Ansys licences are required separately | 求解環境；各功能需另備相應的 Ansys 授權 |
-| Python 3.12 x64 | Complete-package runtime; the launcher can install it | 完整工具包的執行環境；啟動器可安裝 |
-| Python dependencies | `fastapi` (local service), `pyedb` (layout), `pyaedt` (AEDT), `scikit-rf` (Touchstone), `pywebview` (desktop window); installed by the launcher using locked versions | 本機服務、Layout、AEDT、Touchstone 與桌面視窗；啟動器依鎖定版本安裝 |
-| Microsoft Edge WebView2 Runtime | Embedded desktop window; the documented fallback is an external browser | 桌面內嵌視窗；缺少時可退回外部瀏覽器 |
+| Runtime components | Included in the v1.0.3 installer; no separate Python or runtime installation required | v1.0.3 安裝包已含所需元件，不需另裝 Python 或其他執行環境 |
 
-The maintained prerequisite list and optional feature dependencies are in the [public README](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md#complete-tool-prerequisites). Do not assume other AEDT versions are supported. Node.js is not required for normal use of the complete package.
+Use the installation guide supplied with your delivered version. Do not assume other AEDT versions are supported. Node.js is not required for normal use of the complete package.
 
-<p class="zh" lang="zh-Hant">完整前置需求及選用功能套件以公開 README 為準。其他 AEDT 版本的支援情況需另行確認；一般使用完整工具包不需 Node.js。</p>
+<p class="zh" lang="zh-Hant">安裝需求依交付版本隨附的安裝說明確認。其他 AEDT 版本的支援情況需另行確認；一般使用完整工具包不需 Node.js。</p>
 
 ## Licensing & trial · 授權與試用
 
-The complete tool, commercial licensing and support are provided through TADC. Trial duration and machine-binding terms must be confirmed with the supplied package. This tool does not include, provide or bypass Ansys licensing.
+The complete tool, commercial licensing and support are provided through TADC. From v1.0.4, the trial lasts 14 days and is bound to one computer. Confirm the delivered version and licence expiry. This tool does not include, provide or bypass Ansys licensing.
 
-<p class="zh" lang="zh-Hant">完整工具、商用授權與支援由虎門科技提供。試用期限與機器綁定條件須依提供的工具包確認；本工具不含、不提供亦不繞過 Ansys 授權。</p>
+<p class="zh" lang="zh-Hant">完整工具、商用授權與支援由虎門科技提供。v1.0.4 起試用 14 天、單機綁定；請確認交付版本與授權到期時間。本工具不含、不提供亦不繞過 Ansys 授權。</p>
 
 <Link to="/trial/" class="button button-primary">Request a trial · 申請試用</Link>
