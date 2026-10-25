@@ -11,7 +11,7 @@ import KnownIssues from '../../../../components/KnownIssues.astro';
 | Question | Confirmed guidance | 已確認的處理方式 |
 | --- | --- | --- |
 | Can I run the public Source ZIP? | It lacks the complete backend and launcher. Obtain the complete package through TADC. | 公開 ZIP 不含完整後端與啟動器，請向虎門科技取得完整工具包。 |
-| Do I need to install Python? | No. The v1.0.3 installer includes the required runtime components. | 不需要。v1.0.3 安裝包已含所需執行元件。 |
+| Do I need to install Python? | No. The v1.0.4 installer bundles Python and offline packages. Install WebView2 only if the installer prompts you. | 不需要。v1.0.4 安裝包已內附 Python 與離線套件；只有安裝程式提示時才需安裝 WebView2。 |
 | Startup has not finished. | Wait without launching another copy. Retain the exact error if startup fails. | 等待完成，不要重複開啟；若啟動失敗，保留完整錯誤。 |
 | Which AEDT version? | The public prerequisites specify 2026 R1. Confirm compatibility before using another version. | 公開需求指定 2026 R1，其他版本請先確認相容性。 |
 
@@ -20,8 +20,8 @@ import KnownIssues from '../../../../components/KnownIssues.astro';
 | Question | Confirmed guidance | 已確認的處理方式 |
 | --- | --- | --- |
 | Does the tool include Ansys licences? | No. Arrange the licences required for your selected features separately. | 不含 Ansys 授權；各功能所需授權須另備。 |
-| Should I select 4 cores immediately? | HFSS defaults to 12 cores. Use 4 only after an explicit HPC or core-count licence error; keep the original error for support. | HFSS 預設 12 cores，僅遇明確 HPC 或核心授權錯誤才改 4 cores，並保留原始錯誤供支援判讀。 |
-| Where are trial terms? | Confirm them with the complete package supplied by TADC. | 試用條件以虎門科技提供的完整工具包確認。 |
+| Should I select 4 cores immediately? | No. **「求解核心數」** defaults to 12 and can be changed; set 4 only when no HPC licence is available. If the licence server has no Pack-type HPC, SIwave uses the Workgroup pool at the same core count and HFSS is unaffected — that is not a shortage. Keep the original error for support. | 不需要。「求解核心數」預設 12、可調整；只有沒有 HPC 授權時才設 4。授權伺服器沒有 Pack 型 HPC 時，SIwave 以相同核心數改用 Workgroup（pool），HFSS 不受影響，這不代表授權不足。請保留原始錯誤供支援判讀。 |
+| Where are trial terms? | From v1.0.4 the trial lasts 14 days on one computer; the licence file defines the exact dates. | v1.0.4 起試用 14 天、單機綁定，起訖以授權檔為準。 |
 
 See this site's <Link to="/tools/pcb-si/quick-start/">installation and activation steps · 安裝與授權</Link> and <Link to="/tools/pcb-si/bugs/">support-package instructions · 支援包說明</Link>.
 

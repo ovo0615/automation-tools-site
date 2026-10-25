@@ -2,13 +2,16 @@
 import images from '../data/manual-images.json';
 import { url } from '../lib/url';
 const { file, alt, caption, zh } = Astro.props as { file: keyof typeof images; alt: string; caption: string; zh: string };
-const dimensions = images[file];
-if (!dimensions) throw new Error(`Unknown manual image: ${file}`);
+const entry = images[file] as { width: number; height: number; density?: number } | undefined;
+if (!entry) throw new Error(`Unknown manual image: ${file}`);
+const { width, height, density = 1 } = entry;
 const src = url(`/manual/pcb-si/${file}`);
+// 高密度截圖（2x／1.5x）直接指定顯示寬度＝像素 ÷ 密度；只靠 srcset 時，1x 螢幕會把 src 當 1x 候選而顯示成原像素大小。
+const style = density > 1 ? `width:${width}px` : undefined;
 ---
 <figure class="manual-shot">
   <a href={src} aria-label={`Open full-size image · 開啟原尺寸圖片：${alt}`}>
-    <img class="shot" src={src} {...dimensions} alt={alt} loading="lazy" decoding="async" />
+    <img class="shot" src={src} style={style} width={width} height={height} alt={alt} loading="lazy" decoding="async" />
   </a>
   <figcaption>{caption}<br /><span lang="zh-Hant">{zh}</span></figcaption>
 </figure>

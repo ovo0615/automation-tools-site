@@ -1,19 +1,18 @@
 ---
 title: PCB SI 3D Simulation Toolkit
-description: Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and cross-section impedance.
+description: Extract and solve a PCB signal channel, cascade its segments, and inspect S-parameters, TDR locations and an HTML report.
 ---
 
 import Link from '../../../../components/Link.astro';
-
-export const IMG = 'https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph';
+import ManualShot from '../../../../components/ManualShot.astro';
 
 <span class="badge-status available">Available · 已推出</span>
 
-Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and
-cross-section impedance as needed — driving Ansys HFSS 3D Layout, SIwave and Circuit through PyAEDT and PyEDB.
+Extract and solve a PCB signal channel, cascade its segments, and inspect S-parameters, TDR locations and an
+HTML report — driving Ansys HFSS 3D Layout, SIwave and Circuit through PyAEDT and PyEDB.
 
 <p class="zh">
-  PCB SI 3D 模擬分析工具：從 PCB 裁出訊號通道並求解、串接各段，再看眼圖、TDR 定位與截面阻抗；透過 PyAEDT 與 PyEDB 驅動
+  PCB SI 3D 模擬分析工具：從 PCB 裁出訊號通道並求解、串接各段，再看 S 參數、TDR 定位與 HTML 報告；透過 PyAEDT 與 PyEDB 驅動
   Ansys HFSS 3D Layout、SIwave 與 Circuit。
 </p>
 
@@ -21,58 +20,42 @@ cross-section impedance as needed — driving Ansys HFSS 3D Layout, SIwave and C
 
 <p class="zh">主要功能</p>
 
-| Task                                                                    | 功能                                   |
-| ----------------------------------------------------------------------- | -------------------------------------- |
-| Net selection and cutout of the signal channel                          | 選訊號網路、裁出通道                   |
-| Endpoint ports, solver profiles and frequency sweeps                    | 元件端 Port、求解設定檔與掃頻          |
-| Whole-board or segmented analysis with per-segment HFSS / SIwave choice | 整片或分段求解，逐段指定 HFSS／SIwave  |
-| Scheduled solving, stop and retry, Touchstone cascading                 | 排程求解、停止與重試、Touchstone 串接  |
-| Eye Wizard for single-channel, multi-port and IBIS-AMI eye analysis     | 眼圖精靈：單通道、多埠與 IBIS-AMI      |
-| TDR mapped back to the Layout; 2D cross-section impedance               | TDR 標回 Layout；二維截面阻抗          |
-| Single-file HTML report with snapshots                                  | 一鍵單檔 HTML 報告                     |
+| Task                                                                 | 功能                                          |
+| -------------------------------------------------------------------- | --------------------------------------------- |
+| Net selection and cutout of the signal channel                       | 選訊號網路、裁出通道                          |
+| Endpoint ports; automatic sweep from the maximum frequency           | 元件端 Port；依最高頻率自動產生掃頻           |
+| Whole-board or segmented analysis with A–F cut-plane grading         | 整片或分段求解，切面 A～F 評級                |
+| Per-segment HFSS / SIwave, scheduled solving with adjustable cores   | 逐段指定 HFSS／SIwave，排程求解、核心數可調   |
+| Touchstone cascading of all-SIwave or all-HFSS segments              | 全部 SIwave 或全部 HFSS 的分段串接            |
+| S-parameter viewer with exact readout and Excel export               | S 參數檢視、雙擊讀值、匯出 Excel              |
+| TDR mapped back to the Layout                                        | TDR 阻抗定位並標回 Layout                     |
+| IBIS model library                                                   | IBIS 模型庫                                   |
+| Single-file HTML report with snapshots                               | 一鍵單檔 HTML 報告                            |
 
-Some features are marked **Beta** in the tool: usable, with fewer validation cases. See this site's <Link to="/tools/pcb-si/manual/">operation guide · 操作說明</Link> for currently documented steps.
+Some features are **Beta**: usable, with fewer validation cases. They appear only after you tick **「啟用 Beta 功能」**, which applies to the current session only. Beta includes eye-diagram analysis, cross-section impedance (Q2D), cascading mixed HFSS and SIwave segments, stack-up change, backdrill and Layout cleanup. See the <Link to="/tools/pcb-si/manual/">quick start · 快速開始</Link> for the documented workflow.
 
-<p class="zh">部分功能在工具內標示 Beta：可以使用，但驗證案例較少。已完成的步驟見本站操作說明。</p>
+<p class="zh">部分功能屬 Beta：可以使用，但驗證案例較少；要勾「啟用 Beta 功能」才出現，且只對本次啟動有效。Beta 包含眼圖分析、截面阻抗（Q2D）、HFSS 與 SIwave 混合串接、疊構更換、背鑽與 Layout 清理。已整理的步驟見快速開始。</p>
 
 ## Screenshots
 
-<p class="zh">畫面</p>
+<p class="zh">畫面（v1.0.4）</p>
 
-<figure>
-  <a href={`${IMG}/gui-15b-segment-overlays.png`} aria-label="開啟分段預覽原圖">
-  <img class="shot" src={`${IMG}/gui-15b-segment-overlays.png`} width="994" height="630" loading="lazy" decoding="async" alt="Segmentation preview with no-cut zones and cut-point diagnostics on an Ansys example board" />
-  </a>
-  <figcaption>Segmentation preview: no-cut zones and cut-point diagnostics · 分段預覽：禁切區與切點診斷</figcaption>
-</figure>
+<ManualShot file="v104-e21-seg-equal.webp" alt="Three equal segments with no-cut zones and a cut-plane table grading both cuts A on the Example_SYZ board" caption="Segmentation preview: no-cut zones and cut-plane grading" zh="分段預覽：禁切區與切面評級" />
 
-<figure>
-  <a href={`${IMG}/gui-17b-whole-board-preview.png`} aria-label="開啟整片求解預覽原圖">
-  <img class="shot" src={`${IMG}/gui-17b-whole-board-preview.png`} width="994" height="630" loading="lazy" decoding="async" alt="Whole-board solve region preview assigned to HFSS" />
-  </a>
-  <figcaption>Whole-board solve region · 整片求解區域預覽</figcaption>
-</figure>
+<ManualShot file="v104-e22-cascade-done.webp" alt="Cascade of three SIwave segments with the wiring diagram and evidence tags" caption="Cascade of three segments with evidence tags" zh="三段串接與證據標籤" />
 
-<figure>
-  <a href={`${IMG}/gui-14-solve-profile.png`} aria-label="開啟求解設定原圖">
-  <img class="shot" src={`${IMG}/gui-14-solve-profile.png`} width="557" height="583" loading="lazy" decoding="async" alt="Solver profile with judgement bandwidth and multi-segment frequency sweep" />
-  </a>
-  <figcaption>Solver profile and multi-segment sweep · 求解設定檔與多段掃頻</figcaption>
-</figure>
+<ManualShot file="v104-m08-port-sweep.webp" alt="Port settings with a custom 20 GHz maximum frequency and the automatic sweep summary" caption="Automatic sweep from the maximum frequency" zh="依最高頻率自動產生掃頻" />
 
-Screenshots use Ansys example data, not customer boards. · <span class="zh">截圖使用 Ansys 範例資料，不含客戶板。</span>
+Screenshots use the bundled Example_SYZ board, not customer data. · <span class="zh">截圖使用工具內附的 Example_SYZ 範例板，不含客戶資料。</span>
 
 ## Requirements
 
 <p class="zh">系統需求</p>
 
-Windows 10/11 x64, Ansys Electronics Desktop 2026 R1 with the licences each feature needs, and Python 3.12 (the
-launcher can install it). The maintained list is in the
-[public README](https://github.com/ovo0615/pcb-si-3d-simulation-toolkit/blob/main/README.en.md#complete-tool-prerequisites).
+Windows 10/11 x64, Microsoft Edge WebView2 Runtime, and Ansys Electronics Desktop 2026 R1 with the licences each feature needs. The installer bundles Python and every package; no separate installation is required. See <Link to="/tools/pcb-si/requirements/">requirements · 系統需求</Link>.
 
 <p class="zh">
-  Windows 10／11 64 位元、Ansys Electronics Desktop 2026 R1 與各功能所需授權、Python 3.12（啟動器可自動安裝）。完整清單以公開
-  README 為準。
+  Windows 10／11 64 位元、Microsoft Edge WebView2 Runtime、Ansys Electronics Desktop 2026 R1 與各功能所需授權。安裝包已內附 Python 與所需套件，不需另裝。
 </p>
 
 The tool does not include, provide or bypass Ansys licensing.

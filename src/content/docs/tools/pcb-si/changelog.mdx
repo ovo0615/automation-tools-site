@@ -1,13 +1,33 @@
 ---
 title: PCB SI 3D Simulation Toolkit — Release notes
-description: Released versions of the PCB SI 3D Simulation Toolkit, generated from its public repository.
+description: Current PCB SI version (v1.0.4) and the released versions generated from its public repository.
 tableOfContents: false
 ---
 
 import Changelog from '../../../../components/Changelog.astro';
+import Link from '../../../../components/Link.astro';
+
+## Current version · 目前版本：v1.0.4
+
+v1.0.4 is the version supplied for trials. Its public GitHub Release has not been published yet; it will appear in the list below once it is.
+
+<p class="zh">v1.0.4 是目前提供試用的版本；GitHub 公開 Release 尚未發布，發布後會列在下方。</p>
+
+| Change · 變更 | What it means for you · 對使用者的影響 |
+| --- | --- |
+| Installation · 安裝 | Python 3.12, offline packages and the `Example_SYZ` board are bundled; no separate Python or Node.js · 內附 Python 3.12、離線套件與 Example_SYZ 範例板，不需另裝 Python 或 Node.js |
+| Trial · 試用 | 14 days on one computer; the licence file defines the dates · 試用 14 天、單機綁定，起訖以授權檔為準 |
+| Simulation settings · 模擬設定 | Choose a specification or enter the maximum frequency; the sweep is generated automatically · 選規範或填最高掃頻頻率，自動產生掃頻 |
+| Cores and HPC · 核心與 HPC | Cores default to 12 and are adjustable. Without Pack-type HPC, SIwave uses the Workgroup pool at the same core count and HFSS is unaffected · 核心數預設 12、可調；沒有 Pack 型 HPC 時 SIwave 以相同核心數改用 Workgroup，HFSS 不受影響 |
+| Solver assignment · 求解器指定 | A segment's assigned solver no longer switches back after preview clicks · 預覽點擊不再把已指定的求解器改回 |
+| Beta · Beta | 「啟用 Beta 功能」 is off at each launch and applies to that session only; cross-section impedance (Q2D) and mixed HFSS／SIwave cascading are Beta · 每次啟動預設關閉、只對本次有效；截面阻抗（Q2D）與混合串接屬 Beta |
+
+<Link to="/tools/pcb-si/quick-start/">Install v1.0.4 · 安裝與試用授權</Link> · <Link to="/tools/pcb-si/manual/">Quick start · 快速開始</Link>
+
+## Published releases · 已發布版本
 
 Release notes are maintained in Traditional Chinese in the public repository.
 
-<p class="zh">PCB SI 3D 模擬分析工具的版本更新，取自公開 repo 的 CHANGELOG（繁體中文）。</p>
+<p class="zh">以下取自公開 repo 的 CHANGELOG（繁體中文），只列已發布版本。</p>
 
 <Changelog slug="pcb-si" />

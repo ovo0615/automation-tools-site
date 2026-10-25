@@ -3,7 +3,9 @@ import { toolList, toolData } from '../lib/data';
 import { url } from '../lib/url';
 const available = toolList.filter(t => t.status === 'available');
 const upcoming = toolList.filter(t => t.status !== 'available');
-const image = 'https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-toolkit/1d27b28bb9dbbd26b3dfe634b17632a647b9a6ed/graph/gui-15b-segment-overlays.png';
+const image = url('/manual/pcb-si/v104-e21-seg-equal.webp');
+// 目前版本：tools.json 的 currentVersion（試用交付版）優先，沒有才用公開 CHANGELOG 最新已發布版。
+const latest = (slug: string, current?: string) => current ?? toolData(slug)?.sections[0]?.version;
 ---
 
 <section class="tool-catalog not-content" aria-label="Tools · 工具一覽">
@@ -16,15 +18,15 @@ const image = 'https://raw.githubusercontent.com/ovo0615/pcb-si-3d-simulation-to
         <p>{t.summary}</p>
         <p class="zh" lang="zh-Hant">{t.summaryZh}</p>
         <p class="release-meta">Available · 已推出</p>
-        {toolData(t.slug)?.sections[0] && (
+        {latest(t.slug, t.currentVersion) && (
           <p class="release-meta">
-            Latest · 最新版本：<a href={url(`/tools/${t.slug}/changelog/`)}>{toolData(t.slug)!.sections[0].version}</a>
+            Current · 目前版本：<a href={url(`/tools/${t.slug}/changelog/`)}>{latest(t.slug, t.currentVersion)}</a>
           </p>
         )}
         </div>
         {t.slug === 'pcb-si' && <figure>
           <a href={url('/tools/pcb-si/')} aria-label="Explore PCB SI segmentation · 查看 PCB SI 分段功能">
-            <img class="shot" src={image} width="994" height="630" alt="PCB channel segmentation preview with cut points and no-cut zones" loading="lazy" decoding="async" />
+            <img class="shot" src={image} width="960" height="540" alt="PCB SI v1.0.4 channel split into three segments with no-cut zones and graded cut planes" loading="lazy" decoding="async" />
           </a>
           <figcaption>Channel segmentation · 通道分段預覽</figcaption>
         </figure>}

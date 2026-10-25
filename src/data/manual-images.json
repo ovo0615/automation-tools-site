@@ -19,64 +19,134 @@
     "width": 616,
     "height": 482
   },
-  "19-S01_task_picker.png": {
-    "width": 1920,
-    "height": 1080
+  "v104-qs01-task-picker.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "19-S07a_help_menu.png": {
-    "width": 530,
-    "height": 230
+  "v104-qs07-help-menu.webp": {
+    "width": 825,
+    "height": 288,
+    "density": 2
   },
-  "19-S11_ansys_license_table.png": {
-    "width": 475,
-    "height": 810
+  "v104-qs11-license-table.webp": {
+    "width": 492,
+    "height": 562,
+    "density": 2
   },
-  "19-S09a_import_button.png": {
-    "width": 980,
-    "height": 244
+  "v104-qs09-license-buttons.webp": {
+    "width": 960,
+    "height": 223,
+    "density": 2
   },
-  "19-S12b_view_menu.png": {
-    "width": 720,
-    "height": 502
+  "v104-qs12-view-menu.webp": {
+    "width": 691,
+    "height": 509,
+    "density": 2
   },
-  "19-S14_result_tabs.png": {
-    "width": 1920,
-    "height": 1080
+  "v104-qs14-main-window.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "19-S15b_support_bundle.png": {
+  "v104-m02-path-crop.webp": {
     "width": 656,
-    "height": 419
+    "height": 164,
+    "density": 2
   },
-  "20-S02_b_path_filled.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m03a-board-loaded.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S03_nets_selected.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m03-nets-selected.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S05_a_extent_params.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m05-extent-params.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S06_b_cut_layout.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m06-cut-layout.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S08_a_sweep.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m08-port-sweep.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S09_b_ports_created.png": {
-    "width": 704,
-    "height": 308
+  "v104-m09-ports-dialog.webp": {
+    "width": 584,
+    "height": 287,
+    "density": 2
   },
-  "20-S09_c_cut_layout_with_ports.png": {
-    "width": 1920,
-    "height": 1053
+  "v104-m09c-layout-ports.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
   },
-  "20-S10_b_after_no_split.png": {
-    "width": 1878,
-    "height": 602
+  "v104-m10-no-split.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e21-seg-equal.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e21-seg-3d.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e21-all-siwave-assigned.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e21-all-siwave-done.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e22-cascade-done.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e22-sparam-readout.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e22-native-save-dialog.webp": {
+    "width": 638,
+    "height": 520,
+    "density": 1.5
+  },
+  "v104-e23-tdr-result.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e22-report-generated.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-e22-html-report.webp": {
+    "width": 960,
+    "height": 540,
+    "density": 2
+  },
+  "v104-qs15-support-bundle.webp": {
+    "width": 664,
+    "height": 428,
+    "density": 2
   }
 }

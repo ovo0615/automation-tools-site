@@ -1,110 +1,202 @@
 ---
 title: 快速開始
-description: Prepare a PCB SI channel with board loading, cutout, ports, frequency and whole-board segmentation.
+description: Run a PCB SI channel end to end with v1.0.4 — load, cut, ports, segmentation, scheduled solving, cascading, S-parameters, TDR and the HTML report.
 ---
 
 import Link from '../../../../components/Link.astro';
 import ManualShot from '../../../../components/ManualShot.astro';
 
-This walkthrough covers preparation through the unsegmented channel, using the v1.0.3 interface captured for EP20. Solver assignment and the solve-to-results workflow will be added in the next version.
+This walkthrough runs the bundled `Example_SYZ` board from loading to the HTML report, using the **v1.0.4** interface shown in EP20～EP23. Select an image to view it at full size.
 
-<p class="zh" lang="zh-Hant">本頁依 EP20 的 v1.0.3 實拍，完成載板、裁切、Port、頻率與不分割設定；指定 SIwave 及後續求解流程下一版補上。點圖片可看原尺寸。</p>
+<p class="zh" lang="zh-Hant">本頁用內附的 `Example_SYZ` 範例板，從載板一路做到 HTML 報告；畫面為 **v1.0.4** 實拍，對應 EP20～EP23。點圖片可看原尺寸。</p>
 
 <Link to="/tools/pcb-si/quick-start/" class="button button-primary">Install & activate first · 先完成安裝與授權</Link>
 
 ## 1. Load a board · 載入電路板
 
-Prepare non-confidential board data and the required Ansys environment. **The v1.0.3 installer does not include an example `.aedb`.** Obtain suitable example data separately. Use ASCII-only source and working paths, including all parent folders.
+v1.0.4 includes `Example_SYZ.aedb` under `versions/<version folder>/web_app/examples/` in the installation folder. **Copy it to your own ASCII-only working folder first**; do not work on the installed original. Use ASCII-only paths for every source and output, including all parent folders.
 
-<p class="zh" lang="zh-Hant">準備不涉機密的板檔與所需 Ansys 環境。**v1.0.3 安裝包未內附範例 `.aedb`**，範例資料須另備；來源與工作資料夾的完整路徑均使用 ASCII。</p>
+<p class="zh" lang="zh-Hant">v1.0.4 內附範例板，位於安裝目錄 `versions/<版本資料夾>/web_app/examples/Example_SYZ.aedb`。**先複製到自己的 ASCII 工作資料夾再用**，不要直接改安裝目錄裡的原件。來源與輸出的完整路徑都只用 ASCII。</p>
 
-At the task picker, select board import, cutout, Port setup and segmentation as needed, then press **「開始」**. Beside the input field, press **「瀏覽…」** to choose the board, then **「載入電路板」**. The screenshot shows the selected path after returning to the tool.
+Beside **「輸入檔案（.aedb / .brd / .tgz）」**, press **「瀏覽…」** to choose the board, then **「載入電路板」**.
 
-<p class="zh" lang="zh-Hant">在任務入口選取載板、裁切、Port 與分段所需項目後按「開始」。在輸入檔案欄旁按「瀏覽…」選板檔，再按「載入電路板」。圖中是選取後回到工具的畫面。</p>
+<p class="zh" lang="zh-Hant">在「輸入檔案（.aedb / .brd / .tgz）」旁按「瀏覽…」選板檔，再按「載入電路板」。</p>
 
-<ManualShot file="20-S02_b_path_filled.png" alt="Board input after selection and the 載入電路板 button, with its local path removed" caption="Choose the board using Browse, then load it." zh="按「瀏覽…」選檔，再按「載入電路板」；本機路徑已遮蔽。" />
+<ManualShot file="v104-m02-path-crop.webp" alt="Input file field with Example_SYZ.aedb, the 瀏覽… button and 載入電路板" caption="Choose the board with Browse, then load it." zh="按「瀏覽…」選檔，再按「載入電路板」。" />
+
+<ManualShot file="v104-m03a-board-loaded.webp" alt="Example_SYZ loaded with 307 available nets, GND listed as reference and the full Layout displayed" caption="After loading, the nets are listed and GND is suggested as the reference." zh="載入完成：列出 307 個網路，GND 自動列為參考網路。" />
 
 ## 2. Select nets · 選擇網路
 
-In **「選擇網路（Nets）」**, filter the available nets and add the required signals and references. This example selects `ST_CTL` and `ST_ERROR` as signals, with `GND` as the reference. Use your board's own net names.
+In **「選擇網路（Nets）」**, type a filter, then press **「訊」** to add a signal or **「參」** to add a reference. This example uses `ST_CTL` and `ST_ERROR` as signals and `GND` as the reference.
 
-<p class="zh" lang="zh-Hant">在「選擇網路（Nets）」篩選並加入訊號與參考網路。本次示範訊號是 `ST_CTL`、`ST_ERROR`，參考為 `GND`；自己的板子依實際網路名稱選取。</p>
+<p class="zh" lang="zh-Hant">在「選擇網路（Nets）」輸入過濾字，按「訊」加入訊號、按「參」加入參考網路。本例訊號是 `ST_CTL`、`ST_ERROR`，參考為 `GND`；自己的板子依實際網路名稱選取。</p>
 
-<ManualShot file="20-S03_nets_selected.png" alt="Net selection with ST_CTL and ST_ERROR as signals and GND as reference" caption="Check signals and references before cutting." zh="確認訊號與參考網路分別放入正確清單。" />
-
-The **「完整 Layout」** tab shows the original board. **「裁切後 Layout」** displays the cutout after it has been generated; changing tabs does not run the cutout.
-
-<p class="zh" lang="zh-Hant">「完整 Layout」顯示原始板；產生裁切結果後再用「裁切後 Layout」查看。切換頁籤本身不會執行裁切。</p>
+<ManualShot file="v104-m03-nets-selected.webp" alt="Net selection with ST_CTL and ST_ERROR as signals and GND as reference" caption="Check signals and references before cutting." zh="確認訊號與參考網路分別放入正確清單。" />
 
 ## 3. Preview and cut · 預覽與裁切
 
-Under **「裁切設定」**, the demonstration uses **「外擴距離（mm）」＝5** and **「框選範圍形狀」＝「貼合走線（Conforming）」**. Press **「分析精確裁切外框」** to inspect the proposed boundary before cutting.
+Under **「裁切設定」**, set **「外擴距離（mm）」** and **「框選範圍形狀」**, then press **「分析精確裁切外框」** to preview the boundary. The example uses **5 mm** and **「貼合走線（Conforming）」**.
 
-<p class="zh" lang="zh-Hant">在「裁切設定」將「外擴距離（mm）」設為 5，「框選範圍形狀」選「貼合走線（Conforming）」，按「分析精確裁切外框」查看外框。這是本次示範值，請依板檔調整。</p>
+<p class="zh" lang="zh-Hant">在「裁切設定」填「外擴距離（mm）」、選「框選範圍形狀」，按「分析精確裁切外框」預覽外框。本例用 5 mm、貼合走線（Conforming）。</p>
 
-<ManualShot file="20-S05_a_extent_params.png" alt="Cutout settings with 5 mm expansion, Conforming and the precise-boundary preview button" caption="Preview the cutout boundary before creating the output." zh="先核對 5 mm 與 Conforming，再預覽外框。" />
+| Shape · 形狀 | Boundary · 外框 |
+| --- | --- |
+| 貼合走線（Conforming） | Follows the routing · 沿走線轉彎，只向外擴張所設距離 |
+| 凸包（ConvexHull） | Convex outline around the routing · 包住走線的凸多邊形 |
+| 矩形（Bounding Box） | Rectangle around the routing · 包住走線的矩形 |
 
-Choose the cutout destination with **「瀏覽…」**, then press **「執行裁切」**. In **「裁切後 Layout」**, check that both selected signals and their reference conductors remain.
+<ManualShot file="v104-m05-extent-params.webp" alt="Cutout settings with 5 mm expansion, Conforming and the 分析精確裁切外框 button" caption="Preview the cutout boundary before creating the output." zh="先核對外擴距離與形狀，再預覽外框。" />
 
-<p class="zh" lang="zh-Hant">由「瀏覽…」選擇裁切輸出位置，按「執行裁切」。完成後在「裁切後 Layout」確認兩條訊號及參考導體均保留。</p>
+Under **「執行裁切」**, choose the output with **「瀏覽…」** and press **「執行裁切」**. In **「裁切後 Layout」**, check that both signals and their reference conductors remain.
 
-<ManualShot file="20-S06_b_cut_layout.png" alt="Cropped channel displayed in the 裁切後 Layout tab" caption="Inspect the generated channel before configuring ports." zh="先檢查裁切結果，再設定 Port。" />
+<p class="zh" lang="zh-Hant">在「執行裁切」用「瀏覽…」選輸出位置，按「執行裁切」。完成後在「裁切後 Layout」確認兩條訊號與參考導體都保留。</p>
+
+<ManualShot file="v104-m06-cut-layout.webp" alt="Cropped channel displayed in the 裁切後 Layout tab" caption="Inspect the generated channel before configuring ports." zh="先檢查裁切結果，再設定 Port。" />
+
+If the system log warns that the signal-layer fill material is air, confirm the actual material and dielectric constant before solving.
+
+<p class="zh" lang="zh-Hant">系統日誌若警告「訊號層填充材料為空氣」，先確認實際材料與介電常數再求解。</p>
 
 ## 4. Ports and frequency · Port 與頻率
 
-In **「Port 設定」**, keep the shown automatic **「Port 類型」** and confirm the two endpoint components are selected: `U14` and `U22` in this example. They were already checked before **「建議端點（最多 2 個）」** was pressed.
+In **「Port 設定」**, keep **「Port 類型」** on **「自動（建議）」** unless you need another type, and confirm the endpoint components — `U14` and `U22` here. **「建議端點（最多 2 個）」** picks them automatically.
 
-<p class="zh" lang="zh-Hant">在「Port 設定」保留圖示的自動「Port 類型」，核對兩端元件。示範中 U14、U22 原本就已勾選；按「建議端點（最多 2 個）」前後勾選狀態相同。</p>
+<p class="zh" lang="zh-Hant">在「Port 設定」，「Port 類型」維持「自動（建議）」，核對兩端元件（本例 U14、U22）；「建議端點（最多 2 個）」可自動勾選。</p>
 
-Under **「模擬設定」**, choose **「選擇規範」→「自訂頻率」** and set **「最高掃頻頻率（GHz）」** to **20**. Confirm the three-part summary beneath it.
+| Port type · Port 類型 | Use · 適用 |
+| --- | --- |
+| 自動（建議） | Picks a suitable type per component · 依元件自動選擇 |
+| Pin Group（細間距 BGA） | Fine-pitch BGA; the component's reference pins form the negative terminal · 以元件參考腳作負端 |
+| Coax（同軸） | Coaxial port at each pin · 每支腳建同軸埠 |
+| Circuit（電路埠） | Circuit port between pin and reference · 腳位與參考之間的電路埠 |
 
-<p class="zh" lang="zh-Hant">在「模擬設定」的「選擇規範」選「自訂頻率」，「最高掃頻頻率（GHz）」填 20，核對下方三段式摘要。</p>
+Under **「模擬設定」**, choose a specification in **「選擇規範」**, or **「自訂頻率」** and enter **「最高掃頻頻率（GHz）」**. The tool generates the sweep; check the summary beneath it. For 20 GHz:
+
+<p class="zh" lang="zh-Hant">在「模擬設定」的「選擇規範」選規範，或選「自訂頻率」填「最高掃頻頻率（GHz）」。掃頻由工具自動產生，核對下方摘要即可。20 GHz 時：</p>
 
 | Range · 範圍 | Sweep · 掃頻 |
 | --- | --- |
-| 0 Hz～1 Hz | 2 points：0 Hz and 1 Hz · 2 點 |
-| 1 Hz～100 MHz | Log scale，20 points per decade · 每 decade 20 點 |
-| 100 MHz～20 GHz | Linear step，0.05 GHz · 每 50 MHz 一點 |
+| 0 Hz～1 Hz | 2 points · 2 點 |
+| 1 Hz～100 MHz | 20 points per decade · 每 decade 20 點 |
+| 100 MHz～20 GHz | Linear, 0.05 GHz step · 每 50 MHz 一點 |
 
-<ManualShot file="20-S08_a_sweep.png" alt="Port settings with U14 and U22 selected, custom 20 GHz frequency and three-part sweep summary" caption="Check endpoints and the frequency summary together." zh="同時核對端點、20 GHz 與三段式掃頻摘要。" />
+<ManualShot file="v104-m08-port-sweep.webp" alt="Port settings with U14 and U22, custom 20 GHz frequency, automatic sweep summary and profile controls" caption="Check endpoints, maximum frequency and the sweep summary together." zh="同時核對端點、最高頻率與自動掃頻摘要。" />
+
+To reuse the settings, press **「另存設定檔」** and name the profile; select it later and press **「套用」**.
+
+<p class="zh" lang="zh-Hant">要重複使用，按「另存設定檔」命名；之後選取設定檔按「套用」。</p>
 
 ## 5. Create ports · 建立 Port
 
-Choose the output destination, then press **「建立 Port 並套用求解器設定」**. The completion dialog reports **4 ports** for this example. Press **「確定」** and inspect the port markers in **「裁切後 Layout」**.
+Choose the output under **「設定 Port 與求解器」**, then press **「建立 Port 並套用求解器設定」**. The completion dialog reports the number of ports — **4** here. Check the port markers in **「裁切後 Layout」**.
 
-<p class="zh" lang="zh-Hant">選好輸出位置後，按「建立 Port 並套用求解器設定」。本例完成對話框顯示建立 4 個 Port；按「確定」，回「裁切後 Layout」核對 Port 標記。</p>
+<p class="zh" lang="zh-Hant">在「設定 Port 與求解器」選輸出位置，按「建立 Port 並套用求解器設定」。完成對話框顯示建立的 Port 數（本例 4 個），再到「裁切後 Layout」核對 Port 標記。</p>
 
-<ManualShot file="20-S09_b_ports_created.png" alt="Completion dialog reporting four created ports with its output path removed" caption="The completion dialog confirms the number of ports." zh="完成對話框確認本例已建立 4 個 Port。" />
+<ManualShot file="v104-m09-ports-dialog.webp" alt="Completion dialog reporting four component ports on two components" caption="The completion dialog confirms the number of ports." zh="完成對話框：已建立 4 個元件端 Port（元件 2 個）。" />
 
-<ManualShot file="20-S09_c_cut_layout_with_ports.png" alt="Cutout Layout with endpoint Port labels at U14 and U22" caption="Verify endpoint markers on the channel." zh="在 Layout 核對 U14 與 U22 兩端的 Port 標記。" />
+<ManualShot file="v104-m09c-layout-ports.webp" alt="Cutout Layout with endpoint Port labels at U14 and U22" caption="Verify endpoint markers on the channel." zh="在 Layout 核對 U14 與 U22 兩端的 Port 標記。" />
 
-**v1.0.3 has no Port table.** Check the completion dialog and Layout labels here. Port-name and order verification in the wiring view will be documented with the later cascade workflow.
+## 6. Segment the channel · 分段
 
-<p class="zh" lang="zh-Hant">**v1.0.3 沒有 Port 表格。** 此處先核對完成對話框與 Layout 標記；接線圖中的 Port 名稱及順序，等後續串接操作說明補上。</p>
+In **「N 段分割」**, choose one of three approaches. The cut-plane table grades each cut from **A** to **F**; **「可接受評分」** sets the minimum (B or better is recommended).
 
-## 6. Start without splitting · 先不分割
+<p class="zh" lang="zh-Hant">在「N 段分割」選一種方式。切面評估表把每一刀評為 A～F 級，「可接受評分」設定門檻（建議 B 級以上）。</p>
 
-In **「N 段分割」**, choose **「不分割 · 整片求解」** for the first preparation run. The result reports **1 segment** and **0 cut-plane Port groups**. Endpoint ports come from the preceding Port step.
-
-<p class="zh" lang="zh-Hant">在「N 段分割」按「不分割 · 整片求解」，先用整片通道作為基準。圖中產生 1 段、切面 Port 配對 0 組；兩端 Port 沿用前一步。</p>
-
-<ManualShot file="20-S10_b_after_no_split.png" alt="Unsegmented channel with one segment and zero cut-plane Port pairs" caption="Preparation stops at the unsegmented channel." zh="本頁停在不分割結果；指定求解器與執行求解尚未涵蓋。" />
-
-## Next version · 下一版補上
-
-| Chapter · 章節 | Status · 狀態 |
+| Button · 按鈕 | Result · 結果 |
 | --- | --- |
-| SIwave assignment, cores and scheduling · 指定 SIwave、核心數與排程 | Next version · 下一版補上 |
-| Solve, cascade and S-parameters · 求解、串接與 S 參數 | Next version · 下一版補上 |
-| Run history and output folder · 執行歷史與輸出資料夾 | Next version · 下一版補上 |
-| Segmented solving, TDR, eyes, cross-section impedance and reports · 分段求解、TDR、眼圖、截面阻抗與報告 | Documentation in preparation · 撰寫中 |
+| 「不分割 · 整片求解」 | One segment, no cut-plane ports; a baseline for comparison · 1 段、不建切面 Port，可當對照基準 |
+| 「分析切割位置（等分）」 | N segments of similar length; suits all-HFSS solving · N 段長度相近，適合全段 HFSS |
+| 「依 3D 複雜度分析切割位置」 | 3D structures to HFSS, planar routing to SIwave · 3D 結構給 HFSS、平面走線給 SIwave |
+
+After analysing, check the table and press **「執行 N 段分割」**.
+
+<p class="zh" lang="zh-Hant">分析後核對評估表，再按「執行 N 段分割」。</p>
+
+<ManualShot file="v104-m10-no-split.webp" alt="Unsegmented channel with one segment and zero cut-plane Port pairs" caption="Whole-board: one segment and no cut-plane ports." zh="不分割：1 段、切面 Port 0 組。" />
+
+<ManualShot file="v104-e21-seg-equal.webp" alt="Three equal segments with no-cut zones and a cut-plane table grading both cuts A" caption="Equal split into three segments; both cuts are grade A." zh="等分 3 段：禁切／風險疊圖與切面評估表，兩刀都是 A 級。" />
+
+<ManualShot file="v104-e21-seg-3d.webp" alt="Segmentation by 3D complexity recommending HFSS for S1 and S3 and SIwave for S2" caption="By 3D complexity: S1 and S3 recommend HFSS, S2 recommends SIwave." zh="依 3D 複雜度分段：S1、S3 建議 HFSS，S2 建議 SIwave。" />
+
+## 7. Assign solvers and schedule · 指定求解器與排程
+
+In **「排程求解（混合求解區域）」**, each segment shows the recommended solver. Change it per segment, or press **「全部 SIwave」** or **「全部 HFSS」**. A warning icon marks choices that differ from the recommendation.
+
+<p class="zh" lang="zh-Hant">在「排程求解（混合求解區域）」，每段列出建議求解器；可逐段改，或按「全部 SIwave」「全部 HFSS」。與建議不同時會顯示警示圖示。</p>
+
+<ManualShot file="v104-e21-all-siwave-assigned.webp" alt="Mixed solve region with all three segments assigned to SIwave and the core count set to 12" caption="All segments assigned to SIwave; cores set to 12." zh="三段都指定 SIwave；求解核心數 12。" />
+
+**「求解核心數」** defaults to **12** and is remembered. Set 4 only when no HPC licence is available. If the licence server has no Pack-type HPC, SIwave uses the Workgroup pool at the same core count; this is not a licence shortage, so do not lower the cores yourself.
+
+<p class="zh" lang="zh-Hant">「求解核心數」預設 **12**，會記住設定。只有沒有 HPC 授權時才設 4。授權伺服器沒有 Pack 型 HPC 時，SIwave 會以相同核心數改用 Workgroup（pool），這不代表授權不足，不需要自己降核心。</p>
+
+Press **「開始混合求解排程模擬」**. Segments run in order; **「停止」** ends the run. When every segment shows **「完成」**, **「開啟模擬資料夾」** opens the output, and **「分段排程執行歷史」** keeps each run.
+
+<p class="zh" lang="zh-Hant">按「開始混合求解排程模擬」，各段依序求解；「停止」可中止。各段都顯示「完成」後，可按「開啟模擬資料夾」，「分段排程執行歷史」保留每次紀錄。</p>
+
+<ManualShot file="v104-e21-all-siwave-done.webp" alt="Scheduled solve finished with three SIwave segments complete" caption="All three SIwave segments complete." zh="三段 SIwave 全部完成。" />
+
+## 8. Cascade · 電路串接
+
+Under **「電路串接」**, keep **「本工具分段結果」**, press **「預覽接線」** to check the wiring, then **「執行電路串接」**. Check the summary and the evidence tags: solver source, sweep, passivity and causality.
+
+<p class="zh" lang="zh-Hant">在「電路串接」選「本工具分段結果」，按「預覽接線」核對接線，再按「執行電路串接」。完成後核對摘要與證據標籤：求解來源、掃頻證據、被動性、因果性。</p>
+
+<ManualShot file="v104-e22-cascade-done.webp" alt="Cascade complete: 4 ports, 0 to 20 GHz, 560 points, max S 0.996, with the three-segment wiring diagram" caption="Cascade of three SIwave segments: 4 ports, 0–20 GHz, 560 points." zh="三段 SIwave 串接完成：4 port、0～20 GHz、560 點、max|S|＝0.996。" />
+
+Cascade results from **all-SIwave** or **all-HFSS** segments. Cascading a mix of HFSS and SIwave segments is **Beta**: the **「執行電路串接」** button appears only after you enable Beta.
+
+<p class="zh" lang="zh-Hant">正式流程是**全部 SIwave** 或**全部 HFSS** 求解後再串接。HFSS 與 SIwave 混合的結果串接屬 **Beta**，要先勾「啟用 Beta 功能」才會出現「執行電路串接」。</p>
+
+Cascading assumes no electromagnetic coupling between segments. If segment boundaries are too close, or a cut crosses a shared reference-plane opening, the assumption fails.
+
+<p class="zh" lang="zh-Hant">串接假設段與段之間沒有電磁耦合；切面太近，或兩側共用同一處參考層破口時，這個假設不成立。</p>
+
+## 9. S-parameters · S 參數
+
+The **「S 參數」** tab shows insertion loss, return loss, NEXT and FEXT. Switch between **「單端模式」** and **「差動模式」**. **Double-click** the chart to read every curve at that frequency; double-click again to close. **「匯出 Excel」** exports the curves.
+
+<p class="zh" lang="zh-Hant">「S 參數」分頁顯示插入損耗、回波損耗、NEXT、FEXT，可切換「單端模式」與「差動模式」。在圖上**按兩下**顯示該頻點各曲線的精確數值，再按兩下關閉；「匯出 Excel」匯出曲線。</p>
+
+<ManualShot file="v104-e22-sparam-readout.webp" alt="S-parameter chart with a double-click readout at 8.87 GHz listing six curves" caption="Double-click to read exact values at one frequency." zh="按兩下讀出該頻點六條曲線的數值。" />
+
+## 10. Save the Touchstone · 另存 Touchstone
+
+Press **「一鍵另存完整 Touchstone」**. A Windows save dialog titled **「輸出完整串接 Touchstone」** opens; choose the folder and file name, then **「存檔」**. The file is copied byte for byte; the cascade is not re-run.
+
+<p class="zh" lang="zh-Hant">按「一鍵另存完整 Touchstone」，會開啟 Windows 存檔視窗「輸出完整串接 Touchstone」；選資料夾與檔名後按「存檔」。檔案逐位元複製，不會重跑串接。</p>
+
+<ManualShot file="v104-e22-native-save-dialog.webp" alt="Windows save dialog 輸出完整串接 Touchstone with segment folders, the .s4p file name and Touchstone file type; navigation pane removed" caption="Choose the destination and file name in the Windows dialog." zh="在 Windows 存檔視窗選位置與檔名；左側導覽窗格已移除。" />
+
+## 11. TDR · TDR 阻抗定位
+
+In **「TDR 阻抗定位」**, the tool suggests the mode, probe and far-end pins from the cascade. Check **「模式」**, **「探棒（輸入）P」**, **「遠端 P」** and the dielectric constant, then press **「執行 TDR」**. Impedance changes are ranked and marked back on the Layout.
+
+<p class="zh" lang="zh-Hant">在「TDR 阻抗定位」，工具依串接結果建議模式、探棒與遠端腳位。核對「模式」「探棒（輸入）P」「遠端 P」與介電常數後按「執行 TDR」；阻抗劇變會依強度排序並標回 Layout。</p>
+
+<ManualShot file="v104-e23-tdr-result.webp" alt="TDR result with a 17.50 ps rise time, impedance curve and markers A1 to A3 on the Layout" caption="Rise time 17.50 ps; A1 at 70.27 mm (50.0 Ω), A2 at 75.32 mm (37.3 Ω)." zh="上升時間 17.50 ps；A1 70.27 mm 50.0 Ω、A2 75.32 mm 37.3 Ω，標回 Layout。" />
+
+The marker spacing reflects the spatial resolution, a physical limit rather than an error. Run method B (stack-up Dk) as well; a difference between the two shows the velocity uncertainty.
+
+<p class="zh" lang="zh-Hant">標記寬度是空間解析度，屬物理極限而非誤差。可再跑 B 法（疊構 Dk）比對；兩法位置差反映速度的不確定性。</p>
+
+## 12. HTML report · 一鍵 HTML 報告
+
+Press **「更新報告快照」** on each result you want to include. In **「報告」→「預覽與輸出」**, choose the language and **「對外安全模式（隱藏本機路徑）」**, review **「輸出前檢查」**, then press **「一鍵產生 HTML 報告」**. The report is a single self-contained HTML file.
+
+<p class="zh" lang="zh-Hant">在要放進報告的結果按「更新報告快照」。到「報告」→「預覽與輸出」選語言與「對外安全模式（隱藏本機路徑）」，看過「輸出前檢查」後按「一鍵產生 HTML 報告」，產生單一自包含 HTML 檔。</p>
+
+<ManualShot file="v104-e22-report-generated.webp" alt="Report centre 預覽與輸出 tab with language, safe mode, pre-output checks and the generated report message" caption="Generate the report after the pre-output check." zh="輸出前檢查後，一鍵產生 HTML 報告（4 張快照）。" />
+
+<ManualShot file="v104-e22-html-report.webp" alt="Generated HTML report cover for Example_SYZ with the model-quality table" caption="The report opens with model quality and its evidence." zh="報告封面與模型品質判定依據。" />
 
 ## Support package · 支援包
 
-For a reproducible error, open **「說明」→「產生支援包（日誌與診斷）」**. The default package is encrypted. Also save a plain-text review copy and check its contents before sharing. Do not send customer designs or unchecked diagnostics.
+For a reproducible error, open **「說明」→「產生支援包（日誌與診斷）」**. The default package is encrypted; also save the plain-text review copy and check it before sharing. Do not send customer designs or unchecked diagnostics.
 
-<p class="zh" lang="zh-Hant">遇到可重現的錯誤，由「說明」→「產生支援包（日誌與診斷）」匯出。預設支援包加密；另存明文審閱版檢查內容，再決定分享項目。不要傳送客戶設計檔或未檢查的診斷資訊。</p>
+<p class="zh" lang="zh-Hant">遇到可重現的錯誤，由「說明」→「產生支援包（日誌與診斷）」匯出。預設加密；另存明文審閱版檢查內容，再決定分享項目。不要傳送客戶設計檔或未檢查的診斷資訊。</p>
 
-<ManualShot file="19-S15b_support_bundle.png" alt="支援包 dialog showing encryption and plain-text review options" caption="Review diagnostic contents before sending a support package." zh="支援包預設加密；另存明文審閱版檢查敏感資訊。" />
+<ManualShot file="v104-qs15-support-bundle.webp" alt="支援包 dialog with the encrypted default, plain-text review copy and cancel" caption="Review diagnostic contents before sending a support package." zh="支援包預設加密；另存明文審閱版檢查敏感資訊。" />
 
 <Link to="/tools/pcb-si/bugs/">Report a reproducible problem · 回報可重現問題</Link>

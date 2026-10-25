@@ -4,9 +4,10 @@
     "name": "PCB SI 3D Simulation Toolkit",
     "nameZh": "PCB SI 3D 模擬分析工具",
     "status": "available",
+    "currentVersion": "v1.0.4",
     "repo": "ovo0615/pcb-si-3d-simulation-toolkit",
-    "summary": "Extract and solve a PCB signal channel, cascade its segments, and inspect eye diagrams, TDR locations and cross-section impedance.",
-    "summaryZh": "從 PCB 裁出訊號通道並求解、串接各段，再看眼圖、TDR 定位與截面阻抗。"
+    "summary": "Extract and solve a PCB signal channel, cascade its segments, and inspect S-parameters, TDR locations and an HTML report.",
+    "summaryZh": "從 PCB 裁出訊號通道並求解、串接各段，再看 S 參數、TDR 定位與 HTML 報告。"
   },
   {
     "slug": "pcb-pi",
