@@ -5,7 +5,7 @@
   --site-radius: 0.375rem;
   --sl-menu-button-size: 2.75rem;
   --sl-sidebar-width: 17rem;
-  --sl-content-width: 48rem;
+  --sl-content-width: 100%;
   --sl-text-h1: 2rem;
   --sl-text-h2: 1.5rem;
   --sl-text-h3: 1.2rem;
@@ -110,6 +110,12 @@ h1 { font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem); font-weight: 700; }
 .sl-markdown-content p {
   max-width: 72ch;
   text-wrap: pretty;
+}
+/* 中文以全形字寬計量；圖片與表格沿用完整主欄寬度。 */
+.sl-markdown-content p.zh,
+.sl-markdown-content p[lang='zh-Hant'] {
+  max-width: 76em;
+  max-width: 76ic;
 }
 .sl-markdown-content h2 {
   margin-top: 3rem;
