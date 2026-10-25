@@ -28,8 +28,6 @@ export default defineConfig({
         Footer: './src/components/Footer.astro',
         Header: './src/components/ReadingHeader.astro',
         Sidebar: './src/components/ReadingSidebar.astro',
-        ThemeProvider: './src/components/LightTheme.astro',
-        ThemeSelect: './src/components/Empty.astro',
       },
       sidebar: [
         { label: '簡介', link: '/' },

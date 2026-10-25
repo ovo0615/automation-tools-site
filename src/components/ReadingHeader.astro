@@ -1,12 +1,18 @@
 ---
 import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
 import Search from '@astrojs/starlight/components/Search.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 ---
 <div class="reading-header">
   <div class="brand"><SiteTitle /></div>
-  <Search />
+  <div class="reading-controls"><Search /><ThemeSelect /></div>
 </div>
 <style>
-  .reading-header { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 100%; }
+  .reading-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 100%; min-width: 0; }
   .brand { min-width: 0; }
+  .reading-controls { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+  @media (max-width: 50rem) {
+    .reading-header { gap: 0.25rem; }
+    .reading-controls { gap: 0.25rem; }
+  }
 </style>
