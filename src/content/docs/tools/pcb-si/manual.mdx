@@ -109,9 +109,9 @@ In **「N 段分割」**, choose one of three approaches. The cut-plane table gr
 | 「分析切割位置（等分）」 | N segments of similar length; suits all-HFSS solving · N 段長度相近，適合全段 HFSS |
 | 「依 3D 複雜度分析切割位置」 | 3D structures to HFSS, planar routing to SIwave · 3D 結構給 HFSS、平面走線給 SIwave |
 
-After analysing, check the table and press **「執行 N 段分割」**.
+After analysing, check the table, then press **「執行 N 段分割」** for an equal split or **「依複雜度執行分段（N 段）」** for a split by 3D complexity.
 
-<p class="zh" lang="zh-Hant">分析後核對評估表，再按「執行 N 段分割」。</p>
+<p class="zh" lang="zh-Hant">分析後核對評估表；等分按「執行 N 段分割」，依 3D 複雜度按「依複雜度執行分段（N 段）」。</p>
 
 <ManualShot file="v104-m10-no-split.webp" alt="Unsegmented channel with one segment and zero cut-plane Port pairs" caption="Whole-board: one segment and no cut-plane ports." zh="不分割：1 段、切面 Port 0 組。" />
 
@@ -177,7 +177,7 @@ In **「TDR 阻抗定位」**, the tool suggests the mode, probe and far-end pin
 
 <ManualShot file="v104-e23-tdr-result.webp" alt="TDR result with a 17.50 ps rise time, impedance curve and markers A1 to A3 on the Layout" caption="Rise time 17.50 ps; A1 at 70.27 mm (50.0 Ω), A2 at 75.32 mm (37.3 Ω)." zh="上升時間 17.50 ps；A1 70.27 mm 50.0 Ω、A2 75.32 mm 37.3 Ω，標回 Layout。" />
 
-The marker spacing reflects the spatial resolution, a physical limit rather than an error. Run method B (stack-up Dk) as well; a difference between the two shows the velocity uncertainty.
+The marker width reflects the spatial resolution, a physical limit rather than an error. Run method B (stack-up Dk) as well; a difference between the two shows the velocity uncertainty.
 
 <p class="zh" lang="zh-Hant">標記寬度是空間解析度，屬物理極限而非誤差。可再跑 B 法（疊構 Dk）比對；兩法位置差反映速度的不確定性。</p>
 
