@@ -1,0 +1,12 @@
+---
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import type { StarlightRouteData } from '@astrojs/starlight/route-data';
+type Entry = StarlightRouteData['sidebar'][number];
+// Starlight appends trailingSlash after fragments. Repair only chapter fragments,
+// leaving the page path and deployment base intact. Clone the cached entries.
+const normalize = (entry: Entry): Entry => entry.type === 'group'
+  ? { ...entry, entries: entry.entries.map(normalize) }
+  : { ...entry, href: entry.href.includes('#') ? entry.href.replace(/\/$/, '') : entry.href };
+Astro.locals.starlightRoute.sidebar = Astro.locals.starlightRoute.sidebar.map(normalize);
+---
+<Default />

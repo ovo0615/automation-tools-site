@@ -1,0 +1,12 @@
+---
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import Search from '@astrojs/starlight/components/Search.astro';
+---
+<div class="reading-header">
+  <div class="brand"><SiteTitle /></div>
+  <Search />
+</div>
+<style>
+  .reading-header { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 100%; }
+  .brand { min-width: 0; }
+</style>
