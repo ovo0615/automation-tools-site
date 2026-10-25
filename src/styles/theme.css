@@ -109,10 +109,10 @@ h1 { font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem); font-weight: 700; }
 .sl-markdown-content pre { border: 1px solid var(--sl-color-gray-5); border-radius: var(--site-radius); }
 .sl-markdown-content > :is(p, ul, ol, h2, h3, h4, blockquote) {
   max-width: 72ch;
-  margin-inline: auto;
+  margin-inline: 0;
   text-wrap: pretty;
 }
-/* 中英段落共用行長；圖片保留原尺寸並在同一主欄置中。 */
+/* 中英段落保留行長，與共用圖框左緣對齊，剩餘空間留在右側。 */
 .sl-markdown-content p.zh,
 .sl-markdown-content p[lang='zh-Hant'] {
   max-width: 72ch;
