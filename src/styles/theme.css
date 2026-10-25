@@ -89,7 +89,7 @@ a:hover {
   background: var(--sl-color-accent-low);
 }
 .sidebar-content a, .sidebar-content summary { min-height: 44px; align-content: center; }
-.site-title { color: var(--sl-color-white); font-size: 1.125rem; }
+.site-title { color: var(--sl-color-white); font-size: 2.25rem; }
 .sidebar-content a[aria-current='page'] { font-weight: 600; border-radius: var(--site-radius); }
 .sidebar-content summary:hover, .sidebar-content a:hover { background: var(--sl-color-gray-6); }
 starlight-theme-select select { min-height: 44px; min-width: 44px; font-family: var(--site-font); }
@@ -107,21 +107,23 @@ h1, h2, h3 {
 h1 { font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem); font-weight: 700; }
 .sl-markdown-content :not(pre) > code { color: var(--sl-color-white); border-radius: 0.25rem; }
 .sl-markdown-content pre { border: 1px solid var(--sl-color-gray-5); border-radius: var(--site-radius); }
-.sl-markdown-content p {
+.sl-markdown-content > :is(p, ul, ol, h2, h3, h4, blockquote) {
   max-width: 72ch;
+  margin-inline: auto;
   text-wrap: pretty;
 }
-/* 中文以全形字寬計量；圖片與表格沿用完整主欄寬度。 */
+/* 中英段落共用行長；圖片保留原尺寸並在同一主欄置中。 */
 .sl-markdown-content p.zh,
 .sl-markdown-content p[lang='zh-Hant'] {
-  max-width: 76em;
-  max-width: 76ic;
+  max-width: 72ch;
 }
 .sl-markdown-content h2 {
   margin-top: 3rem;
 }
 .sl-markdown-content figure {
   margin-block: 2rem;
+  margin-inline: auto;
+  max-width: 960px;
 }
 .sl-markdown-content figcaption {
   margin-top: 0.75rem;
@@ -148,10 +150,27 @@ h1 { font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem); font-weight: 700; }
 }
 
 .shot {
-  border: 1px solid var(--sl-color-gray-5);
+  box-sizing: border-box;
+  outline: 1px solid var(--sl-color-gray-5);
+  outline-offset: -1px;
   border-radius: var(--site-radius);
-  width: 100%;
+  display: block;
+  width: auto;
+  max-width: min(100%, 960px);
+  margin-inline: auto;
   height: auto;
+}
+
+/* 原生左右導覽使用剩餘空間，主欄不再跟著寬螢幕放大。 */
+.content-panel > .sl-container { max-width: 960px; margin-inline: auto; }
+@media (min-width: 72rem) {
+  [data-has-sidebar][data-has-toc] .main-pane { width: calc(100% - 17rem); min-width: 0; }
+  .right-sidebar-container { width: 17rem; flex-shrink: 0; }
+  .right-sidebar { width: 17rem; }
+}
+@media (max-width: 50rem) {
+  .site-title { font-size: 1.25rem; }
+  .site-title span { white-space: normal; line-height: 1.2; }
 }
 
 .cta {

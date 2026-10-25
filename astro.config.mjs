@@ -21,7 +21,7 @@ export default defineConfig({
         "Jeff Hong's portfolio of Ansys simulation automation tools: features, release notes, trial requests and feedback.",
       defaultLocale: 'root',
       locales: { root: { label: '繁體中文', lang: 'zh-TW' } },
-      tableOfContents: false,
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
       pagination: false,
       customCss: ['./src/styles/theme.css'],
       components: {
