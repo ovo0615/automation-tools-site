@@ -1,0 +1,31 @@
+<script is:inline>
+  try {
+    const size = localStorage.getItem('pcb-si-font-size');
+    if (['100', '112.5', '125'].includes(size)) document.documentElement.dataset.fontSize = size;
+  } catch {}
+</script>
+<label class="font-size">
+  <span>字級</span>
+  <select aria-label="網頁字體大小">
+    <option value="100">標準</option>
+    <option value="112.5">較大</option>
+    <option value="125">最大</option>
+  </select>
+</label>
+<script>
+  const initFontSize = () => {
+    const select = document.querySelector<HTMLSelectElement>('.font-size select');
+    if (!select) return;
+    select.value = document.documentElement.dataset.fontSize ?? '100';
+    select.onchange = () => {
+      document.documentElement.dataset.fontSize = select.value;
+      try { localStorage.setItem('pcb-si-font-size', select.value); } catch {}
+    };
+  };
+  initFontSize();
+  document.addEventListener('astro:page-load', initFontSize);
+</script>
+<style>
+  .font-size { display: flex; align-items: center; gap: 4px; font-size: 16px; white-space: nowrap; color: var(--sl-color-gray-2); }
+  select { font: inherit; color: inherit; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-4); border-radius: 4px; min-height: 44px; padding: 4px; cursor: pointer; }
+</style>

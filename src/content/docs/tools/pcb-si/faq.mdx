@@ -1,29 +1,34 @@
 ---
 title: FAQ & troubleshooting · 常見問題與疑難排解
-description: Confirm installation, licensing, AEDT version and HPC behaviour before reporting a PCB SI problem.
+description: 回報 PCB SI 問題前，先確認安裝、授權、AEDT 版本與 HPC 狀態。
 ---
 
 import Link from '../../../../components/Link.astro';
 import KnownIssues from '../../../../components/KnownIssues.astro';
+import ViviGuide from '../../../../components/ViviGuide.astro';
+
+<ViviGuide state="think">先核對安裝、授權與版本，再查看下列問題。仍無法排除時，請保留完整錯誤與重現步驟。</ViviGuide>
 
 ## Installation & runtime · 安裝與執行
 
-| Question | Confirmed guidance | 已確認的處理方式 |
+| Question · 問題 | Confirmed guidance · 處理建議 | 已確認的處理方式 |
 | --- | --- | --- |
-| Can I run the public Source ZIP? | It lacks the complete backend and launcher. Obtain the complete package through TADC. | 公開 ZIP 不含完整後端與啟動器，請向虎門科技取得完整工具包。 |
-| Do I need to install Python? | No. The v1.0.4 installer bundles Python and offline packages. Install WebView2 only if the installer prompts you. | 不需要。v1.0.4 安裝包已內附 Python 與離線套件；只有安裝程式提示時才需安裝 WebView2。 |
-| Startup has not finished. | Wait without launching another copy. Retain the exact error if startup fails. | 等待完成，不要重複開啟；若啟動失敗，保留完整錯誤。 |
-| Which AEDT version? | The public prerequisites specify 2026 R1. Confirm compatibility before using another version. | 公開需求指定 2026 R1，其他版本請先確認相容性。 |
+| Can I run the public Source ZIP? · 可以直接執行公開的 Source ZIP 嗎？ | It lacks the complete backend and launcher. Obtain the complete package through TADC. | 公開 ZIP 不含完整後端與啟動器，請向虎門科技取得完整工具包。 |
+| Do I need to install Python? · 需要自行安裝 Python 嗎？ | No. The v1.0.4 installer bundles Python and offline packages. Install WebView2 only if the installer prompts you. | 不需要。v1.0.4 安裝包已內附 Python 與離線套件；只有安裝程式提示時才需安裝 WebView2。 |
+| Startup has not finished. · 工具尚未啟動完成，該怎麼辦？ | Wait without launching another copy. Retain the exact error if startup fails. | 等待完成，不要重複開啟；若啟動失敗，保留完整錯誤。 |
+| Which AEDT version? · 應使用哪個 AEDT 版本？ | The public prerequisites specify 2026 R1. Confirm compatibility before using another version. | 公開需求指定 2026 R1，其他版本請先確認相容性。 |
 
 ## Licences & solving · 授權與求解
 
-| Question | Confirmed guidance | 已確認的處理方式 |
+| Question · 問題 | Confirmed guidance · 處理建議 | 已確認的處理方式 |
 | --- | --- | --- |
-| Does the tool include Ansys licences? | No. Arrange the licences required for your selected features separately. | 不含 Ansys 授權；各功能所需授權須另備。 |
-| Should I select 4 cores immediately? | No. **「求解核心數」** defaults to 12 and can be changed; set 4 only when no HPC licence is available. If the licence server has no Pack-type HPC, SIwave uses the Workgroup pool at the same core count and HFSS is unaffected — that is not a shortage. Keep the original error for support. | 不需要。「求解核心數」預設 12、可調整；只有沒有 HPC 授權時才設 4。授權伺服器沒有 Pack 型 HPC 時，SIwave 以相同核心數改用 Workgroup（pool），HFSS 不受影響，這不代表授權不足。請保留原始錯誤供支援判讀。 |
-| Where are trial terms? | From v1.0.4 the trial lasts 14 days on one computer; the licence file defines the exact dates. | v1.0.4 起試用 14 天、單機綁定，起訖以授權檔為準。 |
+| Does the tool include Ansys licences? · 工具包含 Ansys 授權嗎？ | No. Arrange the licences required for your selected features separately. | 不含 Ansys 授權；各功能所需授權須另備。 |
+| Should I select 4 cores immediately? · 一開始就應選擇 4 核心嗎？ | No. **「求解核心數」** defaults to 12 and can be changed; set 4 only when no HPC licence is available. If the licence server has no Pack-type HPC, SIwave uses the Workgroup pool at the same core count and HFSS is unaffected — that is not a shortage. Keep the original error for support. | 不需要。「求解核心數」預設 12、可調整；只有沒有 HPC 授權時才設 4。授權伺服器沒有 Pack 型 HPC 時，SIwave 以相同核心數改用 Workgroup（pool），HFSS 不受影響，這不代表授權不足。請保留原始錯誤供支援判讀。 |
+| Where are trial terms? · 試用期限與條件是什麼？ | From v1.0.4 the trial lasts 14 days on one computer; the licence file defines the exact dates. | v1.0.4 起試用 14 天、單機綁定，起訖以授權檔為準。 |
 
 See this site's <Link to="/tools/pcb-si/quick-start/">installation and activation steps · 安裝與授權</Link> and <Link to="/tools/pcb-si/bugs/">support-package instructions · 支援包說明</Link>.
+
+<p class="zh" lang="zh-Hant">請參閱本站的安裝與授權步驟，以及支援包說明。</p>
 
 <p class="zh" lang="zh-Hant">先依本站步驟檢查；若錯誤持續，請附重現步驟及檢查過的支援包回報。</p>
 

@@ -2,6 +2,9 @@
   "_note": "Public-safe rules only. Customer names and internal code names are supplied at build time via SITE_GUARD_TERMS / SITE_GUARD_TERMS_FILE and must never be committed.",
   "internalTerms": [],
   "approvedImages": [
+    "/automation-tools-site/vivi/point.webp",
+    "/automation-tools-site/vivi/cheer.webp",
+    "/automation-tools-site/vivi/think.webp",
     "/automation-tools-site/_astro/cadmen-ansys-partner.CFUyT9Uj.png",
     "/automation-tools-site/manual/pcb-si/19-S02_received_files.png",
     "/automation-tools-site/manual/pcb-si/19-S16_hash_check.png",

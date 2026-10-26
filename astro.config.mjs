@@ -16,7 +16,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     starlight({
-      title: 'Ansys 自動化工具',
+      title: 'PCB SI 3D Simulation Toolkit',
       description:
         "Jeff Hong's portfolio of Ansys simulation automation tools: features, release notes, trial requests and feedback.",
       defaultLocale: 'root',

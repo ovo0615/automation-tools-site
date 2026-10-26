@@ -1,0 +1,16 @@
+---
+import { url } from '../lib/url';
+const { state = 'point' } = Astro.props;
+const images: Record<string, string> = { point: 'point', cheer: 'cheer', think: 'think' };
+const image = images[state] ?? 'point';
+---
+<aside class="vivi-guide" aria-label="小維導覽">
+  <img src={url(`/vivi/${image}.webp`)} width="88" height="88" alt="小維 Vivi，PCB SI 工具吉祥物" />
+  <div><p class="vivi-name">小維帶你看</p><p><slot /></p></div>
+</aside>
+<style>
+  .vivi-guide { display: flex; align-items: center; gap: 1rem; margin-block: 1.5rem 2rem; padding-block: 0.75rem; border-block: 1px solid var(--sl-color-gray-5); max-width: 72ch; }
+  img { width: 88px; height: 88px; flex: 0 0 88px; object-fit: contain; }
+  p { margin: 0; }
+  .vivi-name { font-weight: 700; color: var(--sl-color-white); margin-bottom: 0.25rem; }
+</style>
