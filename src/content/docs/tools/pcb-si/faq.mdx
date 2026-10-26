@@ -11,7 +11,7 @@ import ViviGuide from '../../../../components/ViviGuide.astro';
 
 ## Installation & runtime · 安裝與執行
 
-| Question · 問題 | Confirmed guidance · 處理建議 | 已確認的處理方式 |
+| Question · 問題 | Confirmed guidance | 已確認的處理方式 |
 | --- | --- | --- |
 | Can I run the public Source ZIP? · 可以直接執行公開的 Source ZIP 嗎？ | It lacks the complete backend and launcher. Obtain the complete package through TADC. | 公開 ZIP 不含完整後端與啟動器，請向虎門科技取得完整工具包。 |
 | Do I need to install Python? · 需要自行安裝 Python 嗎？ | No. The v1.0.4 installer bundles Python and offline packages. Install WebView2 only if the installer prompts you. | 不需要。v1.0.4 安裝包已內附 Python 與離線套件；只有安裝程式提示時才需安裝 WebView2。 |
@@ -20,15 +20,13 @@ import ViviGuide from '../../../../components/ViviGuide.astro';
 
 ## Licences & solving · 授權與求解
 
-| Question · 問題 | Confirmed guidance · 處理建議 | 已確認的處理方式 |
+| Question · 問題 | Confirmed guidance | 已確認的處理方式 |
 | --- | --- | --- |
 | Does the tool include Ansys licences? · 工具包含 Ansys 授權嗎？ | No. Arrange the licences required for your selected features separately. | 不含 Ansys 授權；各功能所需授權須另備。 |
 | Should I select 4 cores immediately? · 一開始就應選擇 4 核心嗎？ | No. **「求解核心數」** defaults to 12 and can be changed; set 4 only when no HPC licence is available. If the licence server has no Pack-type HPC, SIwave uses the Workgroup pool at the same core count and HFSS is unaffected — that is not a shortage. Keep the original error for support. | 不需要。「求解核心數」預設 12、可調整；只有沒有 HPC 授權時才設 4。授權伺服器沒有 Pack 型 HPC 時，SIwave 以相同核心數改用 Workgroup（pool），HFSS 不受影響，這不代表授權不足。請保留原始錯誤供支援判讀。 |
 | Where are trial terms? · 試用期限與條件是什麼？ | From v1.0.4 the trial lasts 14 days on one computer; the licence file defines the exact dates. | v1.0.4 起試用 14 天、單機綁定，起訖以授權檔為準。 |
 
 See this site's <Link to="/tools/pcb-si/quick-start/">installation and activation steps · 安裝與授權</Link> and <Link to="/tools/pcb-si/bugs/">support-package instructions · 支援包說明</Link>.
-
-<p class="zh" lang="zh-Hant">請參閱本站的安裝與授權步驟，以及支援包說明。</p>
 
 <p class="zh" lang="zh-Hant">先依本站步驟檢查；若錯誤持續，請附重現步驟及檢查過的支援包回報。</p>
 

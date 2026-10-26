@@ -1,5 +1,6 @@
 ---
 import videos from '../data/videos.json';
+import { url } from '../lib/url';
 const { slug = 'pcb-si' } = Astro.props;
 const entries = videos.filter(v => v.tool === slug);
 ---
@@ -7,13 +8,14 @@ const entries = videos.filter(v => v.tool === slug);
  <h2>{v.title}</h2><p class="zh" lang="zh-Hant">{v.titleZh}</p>
  <div class="video-frame" data-video-id={v.youtubeId} data-video-title={`${v.titleZh} · ${v.title}`}>
  <button class="video-play" type="button" aria-label={`播放${v.titleZh} · Play ${v.title}`}>
-  <span class="play-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 4v16l14-8z" fill="currentColor" /></svg></span>
-  <strong>播放影片 · Play video</strong>
-  <span class="video-caption">{v.titleZh}</span>
-  <span class="video-privacy">點擊後載入 YouTube 播放器</span>
+  <img src={url(`/video-thumbs/${v.youtubeId}.webp`)} width="960" height="540" alt="" loading="lazy" decoding="async" />
+  <span class="play-badge" aria-hidden="true">
+   <span class="play-symbol"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 4v16l14-8z" fill="currentColor" /></svg></span>
+   <strong>播放影片 · Play video</strong>
+  </span>
  </button>
  </div>
- <p><a href={`https://www.youtube.com/watch?v=${v.youtubeId}`}>Watch on YouTube · 在 YouTube 觀看</a></p>
+ <p class="video-links"><a href={`https://www.youtube.com/watch?v=${v.youtubeId}`}>Watch on YouTube · 在 YouTube 觀看</a><span>點擊畫面後才載入 YouTube 播放器</span></p>
  </article>)}</div> : <p>No verified public videos listed yet. · 尚未列入已核對的公開影片。</p>}
 <script>
  document.querySelectorAll<HTMLButtonElement>('.video-play').forEach(button => {
@@ -35,13 +37,15 @@ const entries = videos.filter(v => v.tool === slug);
  });
 </script>
 <style>
- .video-frame { aspect-ratio: 16 / 9; min-height: 200px; background: var(--sl-color-gray-6); display: grid; place-items: center; overflow: hidden; border: 1px solid var(--sl-color-gray-5); border-radius: .75rem; }
- .video-frame :global(iframe) { width: 100%; height: 100%; border: 0; }
- .video-play { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .7rem; padding: 1.25rem; border: 0; font: inherit; background: var(--sl-color-gray-6); color: var(--sl-color-white); cursor: pointer; }
- .video-play:hover { background: var(--sl-color-gray-5); }
+ .video-frame { position: relative; aspect-ratio: 16 / 9; background: var(--sl-color-gray-6); overflow: hidden; border: 1px solid var(--sl-color-gray-5); border-radius: .75rem; }
+ .video-frame :global(iframe) { display: block; width: 100%; height: 100%; border: 0; }
+ .video-play { position: absolute; inset: 0; display: grid; place-items: center; padding: 0; border: 0; font: inherit; background: #111; cursor: pointer; }
+ .video-play img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: filter .15s; }
+ .video-play:hover img { filter: brightness(.8); }
  .video-play:focus-visible { outline: 3px solid var(--sl-color-text-accent); outline-offset: -5px; }
- .play-symbol { display: grid; place-items: center; width: 3.25rem; height: 3.25rem; padding-inline-start: .15rem; border-radius: 50%; background: var(--sl-color-text-accent); color: var(--sl-color-black); font-size: 1.35rem; }
- .video-caption { font-size: .95rem; }
- .video-privacy { color: var(--sl-color-gray-2); font-size: .8rem; }
+ .play-badge { position: relative; display: flex; align-items: center; gap: .6rem; padding: .5rem 1rem .5rem .5rem; border-radius: 999px; background: rgb(0 0 0 / .78); color: #fff; font-size: 1rem; box-shadow: 0 2px 12px rgb(0 0 0 / .35); }
+ .play-symbol { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding-inline-start: .15rem; border-radius: 50%; background: #e62117; color: #fff; }
+ .video-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: baseline; }
+ .video-links span { color: var(--sl-color-gray-3); font-size: .875rem; }
  article { margin-block: 2rem; }
 </style>

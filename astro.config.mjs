@@ -24,6 +24,14 @@ export default defineConfig({
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
       pagination: false,
       customCss: ['./src/styles/theme.css'],
+      // 在 <head> 先套用記憶的字級，避免頁面先以標準字級畫出再跳動
+      head: [
+        {
+          tag: 'script',
+          content:
+            "try{const s=localStorage.getItem('pcb-si-font-size');if(['100','112.5','125'].includes(s))document.documentElement.dataset.fontSize=s}catch{}",
+        },
+      ],
       components: {
         Footer: './src/components/Footer.astro',
         Header: './src/components/ReadingHeader.astro',
