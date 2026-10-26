@@ -3,9 +3,9 @@
   "companyUrl": "https://www.cadmen.com/",
   "email": "jeff.hong@cadmen.com",
   "forms": {
-    "trial": null,
-    "feedback": null,
-    "bug": null,
-    "wish": null
+    "trial": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CcBBY4mq10ayHaCFsy9YZyppd6UDCZ5GjH0f2zDDAi1UMU82M1NPNU5HSE1FTllSRThNTEs1MzlYUC4u",
+    "feedback": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CcBBY4mq10ayHaCFsy9YZyppd6UDCZ5GjH0f2zDDAi1UNzlNT0NTM0hNNjRCTjlFQlhKWkFZRTdWTi4u",
+    "bug": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CcBBY4mq10ayHaCFsy9YZyppd6UDCZ5GjH0f2zDDAi1UQlJROU5YUEs0NVhGMjZDOTYxQjBETUZDMi4u",
+    "wish": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=CcBBY4mq10ayHaCFsy9YZyppd6UDCZ5GjH0f2zDDAi1UQ1UzUzJUV1BNOEhGVlFMTE1DUlM5UkJENi4u"
   }
 }
