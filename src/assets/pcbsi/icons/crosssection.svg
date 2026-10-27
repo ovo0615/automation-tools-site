@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="5" y="11" width="42" height="42" rx="5" fill="#18394b" stroke="#73d6ff" stroke-width="2" />
+  <path d="M9 18h34M9 46h34" stroke="#8fe3aa" stroke-width="3" stroke-linecap="round" />
+  <path d="M11 36l3-7h9l3 7zM28 36l3-7h9l3 7z" fill="#ffbd5a" stroke="#ffe0a3" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M15 29c-2-3-2-6-2-9M39 29c2-3 2-6 2-9M15 36c-2 3-2 5-2 8M39 36c2 3 2 5 2 8" fill="none" stroke="#b3ebff" stroke-width="1.5" stroke-dasharray="2 2" opacity=".85" />
+  <text x="48" y="40" fill="#ffca75" font-size="19" font-weight="700">Ω</text>
+</svg>
