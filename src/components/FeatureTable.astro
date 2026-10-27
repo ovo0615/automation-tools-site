@@ -1,0 +1,39 @@
+---
+// 功能介紹的「主要功能」表：每列加上工具的功能圖示與分組標籤。
+import FeatureIcon from './FeatureIcon.astro';
+import { groups, type Group } from '../lib/pcbsi';
+
+const rows: { icon: string; group: Group; en: string; zh: string }[] = [
+  { icon: 'cutout', group: 'prep', en: 'Net selection and cutout of the signal channel', zh: '選訊號網路、裁出通道' },
+  { icon: 'ports', group: 'analysis', en: 'Endpoint ports; automatic sweep from the maximum frequency', zh: '元件端 Port；依最高頻率自動產生掃頻' },
+  { icon: 'segment', group: 'analysis', en: 'Whole-board or segmented analysis with A–F cut-plane grading', zh: '整片或分段求解，切面 A～F 評級' },
+  { icon: 'schedule', group: 'analysis', en: 'Per-segment HFSS / SIwave, scheduled solving with adjustable cores', zh: '逐段指定 HFSS／SIwave，排程求解、核心數可調' },
+  { icon: 'cascade', group: 'result', en: 'Touchstone cascading of all-SIwave or all-HFSS segments', zh: '全部 SIwave 或全部 HFSS 的分段串接' },
+  { icon: 'sparam', group: 'result', en: 'S-parameter viewer with exact readout and Excel export', zh: 'S 參數檢視、雙擊讀值、匯出 Excel' },
+  { icon: 'tdr', group: 'result', en: 'TDR mapped back to the Layout', zh: 'TDR 阻抗定位並標回 Layout' },
+  { icon: 'models', group: 'result', en: 'IBIS model library', zh: 'IBIS 模型庫' },
+  { icon: 'report', group: 'result', en: 'Single-file HTML report with snapshots', zh: '一鍵單檔 HTML 報告' },
+];
+---
+<table class="feature-table">
+  <thead>
+    <tr><th scope="col"><span class="sr-only">Icon · 圖示</span></th><th scope="col">Task</th><th scope="col">功能</th><th scope="col">分組</th></tr>
+  </thead>
+  <tbody>
+    {rows.map((row) => (
+      <tr data-group={row.group}>
+        <td class="ft-icon"><FeatureIcon name={row.icon} group={row.group} size={36} /></td>
+        <td>{row.en}</td>
+        <td lang="zh-Hant">{row.zh}</td>
+        <td class="ft-group">{groups[row.group].zh}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+<style>
+  .feature-table td { vertical-align: middle; }
+  .feature-table th { white-space: nowrap; }
+  .feature-table .ft-icon { width: 1%; padding-inline-end: 0.25rem; }
+  .ft-icon :global(.feature-icon) { display: grid; }
+  .ft-group { color: var(--grp-color); font-size: 0.875rem; font-weight: 700; white-space: nowrap; }
+</style>

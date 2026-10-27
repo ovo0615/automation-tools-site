@@ -1,0 +1,27 @@
+---
+// 首頁上方極淡的 PCB 走線紋路。要拿掉時刪除首頁的 <PcbTraces /> 一行即可，樣式只在這個元件裡。
+---
+<div class="pcb-traces" aria-hidden="true"></div>
+<style is:global>
+  main:has(.pcb-traces) { position: relative; isolation: isolate; }
+  .pcb-traces {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 24rem;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--pcb-trace-color);
+    opacity: var(--pcb-trace-opacity);
+    /* 走線圖樣做遮罩，下緣淡出 */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 24h56l16 16h64l12-12h92M0 72h28l16-16h40M120 72h40l16 16h64M0 120h72l20 20h44M150 140l18-18h72M96 0v14l10 10'/%3E%3Ccircle cx='88' cy='56' r='4'/%3E%3Ccircle cx='116' cy='72' r='4'/%3E%3Ccircle cx='140' cy='140' r='4'/%3E%3Ccircle cx='106' cy='28' r='3'/%3E%3C/svg%3E"), linear-gradient(#000, transparent);
+    -webkit-mask-composite: source-in;
+    -webkit-mask-size: 240px 160px, 100% 100%;
+    -webkit-mask-repeat: repeat, no-repeat;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' viewBox='0 0 240 160' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 24h56l16 16h64l12-12h92M0 72h28l16-16h40M120 72h40l16 16h64M0 120h72l20 20h44M150 140l18-18h72M96 0v14l10 10'/%3E%3Ccircle cx='88' cy='56' r='4'/%3E%3Ccircle cx='116' cy='72' r='4'/%3E%3Ccircle cx='140' cy='140' r='4'/%3E%3Ccircle cx='106' cy='28' r='3'/%3E%3C/svg%3E"), linear-gradient(#000, transparent);
+    mask-size: 240px 160px, 100% 100%;
+    mask-repeat: repeat, no-repeat;
+    mask-composite: intersect;
+  }
+  :root[data-theme='light'] { --pcb-trace-color: #3f6683; --pcb-trace-opacity: 0.13; }
+  :root[data-theme='dark'] { --pcb-trace-color: #73d6ff; --pcb-trace-opacity: 0.09; }
+</style>

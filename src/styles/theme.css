@@ -36,24 +36,55 @@
 }
 
 :root[data-theme='dark'] {
+  /* 深灰藍，接近工具本身的深色介面。 */
   color-scheme: dark;
-  --sl-color-accent-low: #30263f;
+  --sl-color-accent-low: #2f2a45;
   --sl-color-accent: #b59ade;
-  --sl-color-accent-high: #c4a6f3;
-  --sl-color-white: #f0eef4;
-  --sl-color-gray-1: #dfdce5;
-  --sl-color-gray-2: #ccc8d3;
-  --sl-color-gray-3: #aba6b5;
-  --sl-color-gray-4: #928b9e;
-  --sl-color-gray-5: #39363f;
-  --sl-color-gray-6: #242229;
-  --sl-color-gray-7: #1c1b20;
-  --sl-color-black: #19181c;
-  --sl-color-bg-nav: #302a3b;
-  --sl-color-bg-sidebar: #201f24;
-  --sl-color-bg-inline-code: #302c37;
-  --site-button-bg: #c4a6f3;
+  --sl-color-accent-high: #c9adf5;
+  --sl-color-white: #eef2f6;
+  --sl-color-gray-1: #dde3ea;
+  --sl-color-gray-2: #c9d1dc;
+  --sl-color-gray-3: #a9b4c3;
+  --sl-color-gray-4: #8794a6;
+  --sl-color-gray-5: #344150;
+  --sl-color-gray-6: #222c38;
+  --sl-color-gray-7: #1a222c;
+  --sl-color-black: #151c25;
+  --sl-color-bg-nav: #1d2632;
+  --sl-color-bg-sidebar: #19212b;
+  --sl-color-bg-inline-code: #26303c;
+  --site-button-bg: #c9adf5;
   --site-button-text: #21182e;
+}
+/* 深色模式的標頭用淺灰藍，讓透明的 CADMEN×Ansys LOGO（深藍、黑字）完整可見；標頭內的文字與控制改用深色。
+   搜尋視窗也在標頭裡，回到深色。 */
+:root[data-theme='dark'] header.header {
+  color-scheme: light;
+  --sl-color-bg-nav: #b4c0cd;
+  --sl-color-white: #121a24;
+  --sl-color-gray-1: #1c2632;
+  --sl-color-gray-2: #26323f;
+  --sl-color-gray-3: #34414f;
+  --sl-color-gray-4: #4c5a6a;
+  --sl-color-gray-5: #9fadbd;
+  --sl-color-gray-6: #a9b6c5;
+  --sl-color-black: #c2ccd7;
+  --sl-color-accent: #5a3a96;
+  --sl-color-accent-high: #4a2f80;
+}
+:root[data-theme='dark'] header.header site-search dialog {
+  color-scheme: dark;
+  --sl-color-bg-nav: #1d2632;
+  --sl-color-white: #eef2f6;
+  --sl-color-gray-1: #dde3ea;
+  --sl-color-gray-2: #c9d1dc;
+  --sl-color-gray-3: #a9b4c3;
+  --sl-color-gray-4: #8794a6;
+  --sl-color-gray-5: #344150;
+  --sl-color-gray-6: #222c38;
+  --sl-color-black: #151c25;
+  --sl-color-accent: #b59ade;
+  --sl-color-accent-high: #c9adf5;
 }
 
 body {

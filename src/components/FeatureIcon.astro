@@ -1,0 +1,19 @@
+---
+// 工具功能圖示，放在分組色細框的小方塊裡。
+import { iconMarkup, type Group } from '../lib/pcbsi';
+const { name, group, size = 40 } = Astro.props as { name: string; group: Group; size?: number };
+---
+<span class="feature-icon" data-group={group} style={`--fi-size:${size}px`} set:html={iconMarkup(name)} />
+<style>
+  .feature-icon {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: var(--fi-size);
+    height: var(--fi-size);
+    border: 1px solid var(--grp-color);
+    border-radius: 0.375rem;
+    background: var(--icon-tile);
+  }
+  .feature-icon :global(svg) { width: 86%; height: 86%; display: block; }
+</style>

@@ -1,0 +1,79 @@
+/* PCB SI 3D Simulation Toolkit 自身元素：分組重點色與功能圖示。
+   重點色只用在細線、標籤與圖示底框，不做大面積底色。 */
+:root {
+  --icon-tile: #132b3b;
+  --ico-board: url('../assets/pcbsi/icons/board.svg');
+  --ico-cutout: url('../assets/pcbsi/icons/cutout.svg');
+  --ico-ports: url('../assets/pcbsi/icons/ports.svg');
+  --ico-segment: url('../assets/pcbsi/icons/segment.svg');
+  --ico-schedule: url('../assets/pcbsi/icons/schedule.svg');
+  --ico-cascade: url('../assets/pcbsi/icons/cascade.svg');
+  --ico-sparam: url('../assets/pcbsi/icons/sparam.svg');
+  --ico-tdr: url('../assets/pcbsi/icons/tdr.svg');
+  --ico-report: url('../assets/pcbsi/icons/report.svg');
+}
+/* 淺色：工具原色加深到內文對比 4.5：1 以上；深色：直接用工具圖示的原色。 */
+:root[data-theme='light'] {
+  --grp-prep: #1f6b94;
+  --grp-pre: #6447b8;
+  --grp-analysis: #9a5a00;
+  --grp-result: #2a7543;
+}
+:root[data-theme='dark'] {
+  --grp-prep: #73d6ff;
+  --grp-pre: #c3b2ff;
+  --grp-analysis: #ffbd5a;
+  --grp-result: #8fe3aa;
+}
+[data-group='prep'] { --grp-color: var(--grp-prep); }
+[data-group='pre'] { --grp-color: var(--grp-pre); }
+[data-group='analysis'] { --grp-color: var(--grp-analysis); }
+[data-group='result'] { --grp-color: var(--grp-result); }
+[data-group] { --grp-text: var(--grp-color); }
+
+/* 側邊欄：操作說明各章節前放對應的功能圖示（data-icon 由 astro.config.mjs 的 chapter() 設定）。 */
+.sidebar-content a[data-icon] { display: flex; align-items: center; gap: 0.5rem; }
+.sidebar-content a[data-icon]::before {
+  content: '';
+  flex: 0 0 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--icon) center / 118% no-repeat, var(--icon-tile);
+  box-shadow: inset 0 -2px 0 var(--grp-color, transparent);
+}
+.sidebar-content a[data-icon='board'] { --icon: var(--ico-board); }
+.sidebar-content a[data-icon='cutout'] { --icon: var(--ico-cutout); }
+.sidebar-content a[data-icon='ports'] { --icon: var(--ico-ports); }
+.sidebar-content a[data-icon='segment'] { --icon: var(--ico-segment); }
+.sidebar-content a[data-icon='schedule'] { --icon: var(--ico-schedule); }
+.sidebar-content a[data-icon='cascade'] { --icon: var(--ico-cascade); }
+.sidebar-content a[data-icon='sparam'] { --icon: var(--ico-sparam); }
+.sidebar-content a[data-icon='tdr'] { --icon: var(--ico-tdr); }
+.sidebar-content a[data-icon='report'] { --icon: var(--ico-report); }
+.sidebar-content a[data-icon='none']::before { background: none; box-shadow: none; }
+
+/* 快速開始：各章節標題前放同一個圖示，分組色細框。依標題 id 對應。 */
+.sl-markdown-content h2:is(
+  [id^='1-load-a-board'], [id^='2-select-nets'], [id^='3-preview-and-cut'], [id^='4-ports-and-frequency'],
+  [id^='5-create-ports'], [id^='6-segment-the-channel'], [id^='7-assign-solvers'], [id^='8-cascade'],
+  [id^='9-s-parameters'], [id^='10-save-the-touchstone'], [id^='11-tdr'], [id^='12-html-report']
+)::before {
+  content: '';
+  display: inline-block;
+  width: 1.6em;
+  height: 1.6em;
+  margin-inline-end: 0.5em;
+  vertical-align: -0.4em;
+  border: 1px solid var(--grp-color);
+  border-radius: 0.3rem;
+  background: var(--icon) center / 112% no-repeat, var(--icon-tile);
+}
+.sl-markdown-content h2:is([id^='1-load-a-board'], [id^='2-select-nets']) { --icon: var(--ico-board); --grp-color: var(--grp-prep); }
+.sl-markdown-content h2[id^='3-preview-and-cut'] { --icon: var(--ico-cutout); --grp-color: var(--grp-prep); }
+.sl-markdown-content h2:is([id^='4-ports-and-frequency'], [id^='5-create-ports']) { --icon: var(--ico-ports); --grp-color: var(--grp-analysis); }
+.sl-markdown-content h2[id^='6-segment-the-channel'] { --icon: var(--ico-segment); --grp-color: var(--grp-analysis); }
+.sl-markdown-content h2[id^='7-assign-solvers'] { --icon: var(--ico-schedule); --grp-color: var(--grp-analysis); }
+.sl-markdown-content h2[id^='8-cascade'] { --icon: var(--ico-cascade); --grp-color: var(--grp-result); }
+.sl-markdown-content h2:is([id^='9-s-parameters'], [id^='10-save-the-touchstone']) { --icon: var(--ico-sparam); --grp-color: var(--grp-result); }
+.sl-markdown-content h2[id^='11-tdr'] { --icon: var(--ico-tdr); --grp-color: var(--grp-result); }
+.sl-markdown-content h2[id^='12-html-report'] { --icon: var(--ico-report); --grp-color: var(--grp-result); }

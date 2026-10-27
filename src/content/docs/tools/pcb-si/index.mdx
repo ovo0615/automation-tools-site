@@ -5,6 +5,8 @@ description: Extract and solve a PCB signal channel, cascade its segments, and i
 
 import Link from '../../../../components/Link.astro';
 import ManualShot from '../../../../components/ManualShot.astro';
+import FeatureTable from '../../../../components/FeatureTable.astro';
+import WindowShot from '../../../../components/WindowShot.astro';
 
 <span class="badge-status available">Available · 已推出</span>
 
@@ -16,21 +18,13 @@ HTML report — driving Ansys HFSS 3D Layout, SIwave and Circuit through PyAEDT 
   Ansys HFSS 3D Layout、SIwave 與 Circuit。
 </p>
 
+<WindowShot eager file="crop-task-picker.webp" source="v104-qs01-task-picker.webp" width={936} height={586} maxWidth={720} alt="Task picker: the 準備 and 分析 groups, each task with its icon" caption="The task picker groups tasks into prepare, optional pre-processing, analyse and results." zh="入口畫面依準備、前處理（選用）、分析、結果分組；本站的功能圖示與分組色都取自這裡。" />
+
 ## What it does
 
 <p class="zh">主要功能</p>
 
-| Task                                                                 | 功能                                          |
-| -------------------------------------------------------------------- | --------------------------------------------- |
-| Net selection and cutout of the signal channel                       | 選訊號網路、裁出通道                          |
-| Endpoint ports; automatic sweep from the maximum frequency           | 元件端 Port；依最高頻率自動產生掃頻           |
-| Whole-board or segmented analysis with A–F cut-plane grading         | 整片或分段求解，切面 A～F 評級                |
-| Per-segment HFSS / SIwave, scheduled solving with adjustable cores   | 逐段指定 HFSS／SIwave，排程求解、核心數可調   |
-| Touchstone cascading of all-SIwave or all-HFSS segments              | 全部 SIwave 或全部 HFSS 的分段串接            |
-| S-parameter viewer with exact readout and Excel export               | S 參數檢視、雙擊讀值、匯出 Excel              |
-| TDR mapped back to the Layout                                        | TDR 阻抗定位並標回 Layout                     |
-| IBIS model library                                                   | IBIS 模型庫                                   |
-| Single-file HTML report with snapshots                               | 一鍵單檔 HTML 報告                            |
+<FeatureTable />
 
 Some features are **Beta**: usable, with fewer validation cases. They appear only after you tick **「啟用 Beta 功能」**, which applies to the current session only. Beta includes eye-diagram analysis, cross-section impedance (Q2D), cascading mixed HFSS and SIwave segments, stack-up change, backdrill and Layout cleanup. See the <Link to="/tools/pcb-si/manual/">quick start · 快速開始</Link> for the documented workflow.
 
