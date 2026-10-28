@@ -1,9 +1,10 @@
 ---
-// 操作說明章節末的一行文字連結：「看影片：EP21 裁切外框與分段求解」，指到影片頁該集錨點。不嵌播放器。
+// 操作說明章節末的一行文字連結：「看影片：裁切外框與分段求解」，指到影片頁該集錨點。不嵌播放器。
+// ep 只用來查資料，畫面不顯示 EP 編號。
 import { url } from '../lib/url';
-import { findVideo, videoAnchor } from '../lib/videos';
+import { findVideo, shownLabel, videoAnchor } from '../lib/videos';
 const { ep, slug = 'pcb-si' } = Astro.props as { ep: string; slug?: string };
 const v = findVideo(slug, ep);
 if (!v) throw new Error(`VideoLink: no video labelled ${ep}`);
 ---
-<p class="video-ref">看影片：<a href={url(`/tools/${slug}/videos/#${videoAnchor(v)}`)}>{v.label} {v.titleZh}</a></p>
+<p class="video-ref">看影片：<a href={url(`/tools/${slug}/videos/#${videoAnchor(v)}`)}>{[shownLabel(v), v.titleZh].filter(Boolean).join(' ')}</a></p>

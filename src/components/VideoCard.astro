@@ -1,11 +1,12 @@
 ---
-// 影片縮圖卡：縮圖、集數、中英主題、長度。
+// 影片縮圖卡：縮圖、集別（只有流程示範）、中英主題、長度。
 // 影片頁（沒有 href）點縮圖才在原地載入 youtube-nocookie 播放器；首頁（有 href）整張卡連到影片頁該集。
 import { url } from '../lib/url';
-import { videoAnchor, type Video } from '../lib/videos';
+import { shownLabel, videoAnchor, type Video } from '../lib/videos';
 const { video: v, href } = Astro.props as { video: Video; href?: string };
-const name = `${v.label} ${v.titleZh}`;
-const meta = [v.label, v.duration].filter(Boolean).join(' · ');
+const label = shownLabel(v);
+const name = [label, v.titleZh].filter(Boolean).join(' ');
+const meta = [label, v.duration].filter(Boolean).join(' · ');
 const thumb = url(`/video-thumbs/${v.youtubeId}.webp`);
 ---
 {href ? (

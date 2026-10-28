@@ -1,17 +1,19 @@
 ---
 // 首頁「我想要…」任務入口：六張小卡，各連到既有頁面；左側導覽不變。觸控目標至少 44px。
+// 每張卡上方一張示意圖：工具實機截圖局部或影片縮圖（public/home-tasks/），純裝飾、alt 留空。
 import { url } from '../lib/url';
 import { videosOf } from '../lib/videos';
 
-type Task = { zh: string; desc: string; to: string; more?: { label: string; to: string }[] };
+type Task = { zh: string; desc: string; to: string; img: string; more?: { label: string; to: string }[] };
 const manual = '/tools/pcb-si/manual/';
 const tasks: Task[] = [
-  { zh: '申請試用與安裝', desc: '填試用申請，收到安裝包後核對、安裝與啟用授權。', to: '/trial/', more: [{ label: '安裝步驟', to: '/tools/pcb-si/quick-start/' }] },
-  { zh: '第一次跑通', desc: '用內附範例板，從載板一路做到 HTML 報告。', to: manual },
+  { zh: '申請試用與安裝', desc: '填試用申請，收到安裝包後核對、安裝與啟用授權。', to: '/trial/', img: 'trial', more: [{ label: '安裝步驟', to: '/tools/pcb-si/quick-start/' }] },
+  { zh: '第一次跑通', desc: '用內附範例板，從載板一路做到 HTML 報告。', to: manual, img: 'first-run' },
   {
     zh: '查某個步驟',
     desc: '直接跳到操作說明的章節：',
     to: manual,
+    img: 'steps',
     more: [
       { label: '裁切', to: `${manual}#3-preview-and-cut--預覽與裁切` },
       { label: 'Port', to: `${manual}#4-ports-and-frequency--port-與頻率` },
@@ -21,15 +23,16 @@ const tasks: Task[] = [
       { label: '報告', to: `${manual}#12-html-report--一鍵-html-報告` },
     ],
   },
-  { zh: '看操作影片', desc: `工具操作教學 ${videosOf('pcb-si', 'tool-guide').length} 支與 AI Agent 流程示範，點縮圖才播放。`, to: '/tools/pcb-si/videos/' },
-  { zh: '遇到問題', desc: '先查常見問題，可重現的錯誤再回報。', to: '/tools/pcb-si/faq/', more: [{ label: 'Bug 回報', to: '/tools/pcb-si/bugs/' }] },
-  { zh: '看更新了什麼', desc: '各版本的新功能與修正。', to: '/tools/pcb-si/changelog/' },
+  { zh: '看操作影片', desc: `工具操作教學 ${videosOf('pcb-si', 'tool-guide').length} 支與 AI Agent 流程示範，點縮圖才播放。`, to: '/tools/pcb-si/videos/', img: 'videos' },
+  { zh: '遇到問題', desc: '先查常見問題，可重現的錯誤再回報。', to: '/tools/pcb-si/faq/', img: 'problems', more: [{ label: 'Bug 回報', to: '/tools/pcb-si/bugs/' }] },
+  { zh: '看更新了什麼', desc: '各版本的新功能與修正。', to: '/tools/pcb-si/changelog/', img: 'changelog' },
 ];
 ---
 <ul class="tasks not-content" aria-label="我想要…">
   {tasks.map((t) => (
     <li class="task">
       <a class="task-main" href={url(t.to)}>
+        <span class="task-img"><img src={url(`/home-tasks/${t.img}.webp`)} width="640" height="360" alt="" loading="lazy" decoding="async" /></span>
         <span class="task-title">{t.zh}</span>
         <span class="task-desc">{t.desc}</span>
       </a>
@@ -61,6 +64,17 @@ const tasks: Task[] = [
     background: var(--sl-color-gray-7);
   }
   .task:hover { border-color: var(--sl-color-accent-high); }
+  .task-img {
+    display: block;
+    aspect-ratio: 16 / 9;
+    margin: -0.75rem -1rem 0.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    border-radius: var(--site-radius) var(--site-radius) 0 0;
+    background: #111;
+  }
+  .task-img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+  .task-main:hover .task-img img { filter: brightness(0.92); }
   .task-main {
     display: flex;
     flex: 1 1 auto;
