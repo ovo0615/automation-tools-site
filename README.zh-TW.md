@@ -20,7 +20,7 @@
 | 版本更新、下載鈕 | 各工具**公開** repo 的 `CHANGELOG.md`（只取 `## v…` 節）與 GitHub Release，建置時抓取 |
 | 聯絡方式與表單連結 | `src/data/site.json` |
 | 八個固定工具入口 | `src/data/tool-navigation.json` |
-| 公開影片 | `src/data/videos.json`；`tool`、`youtubeId`、`title`、`titleZh`、`kind` |
+| 公開影片 | `src/data/videos.json`；`tool`、`series`（`tool-guide` 工具操作教學／`agent-workflow` AI Agent 流程示範）、`episode`、`label`、`youtubeId`、`title`、`titleZh`、`titleEn`，選填 `duration`（如 `7:29`）、`guide`（對應操作說明章節）；縮圖放 `public/video-thumbs/<youtubeId>.webp`（960×540），並加入 `guard/policy.json` |
 | 許願清單／公開路線圖 | `src/data/wishes.json`；`id`、`tool`、`title`、`titleZh`、`status` |
 | 已知問題 | `src/data/known-issues.json`；`id`、`tool`、`title`、`titleZh`、`description`、`descriptionZh`、`versions`，選填 `source` |
 
@@ -28,7 +28,7 @@
 
 表單欄位：`trial`、`bug`、`wish`、`feedback`。填公司 Microsoft Forms HTTPS 網址，未就緒保留 `null`，頁面顯示 Email 與「線上表單準備中」。建置會拒絕其他表單網域、無效影片 ID、重複項目與缺漏內容。
 
-新增影片只改資料檔；先確認是頻道已公開影片，並區分流程示範與現版工具操作教學。播放器在點擊後才載入 YouTube iframe。
+新增影片改資料檔、加縮圖；先確認是頻道已公開影片，並以 `series` 區分流程示範與現版工具操作教學。播放器在點擊後才載入 YouTube iframe。
 
 ## 建置檢查
 

@@ -1,5 +1,69 @@
 [
-  { "tool": "pcb-si", "youtubeId": "0q0fQNSyg-E", "title": "Part 1: Channel preparation & backdrill", "titleZh": "上集：通道準備與背鑽", "kind": "workflow-demonstration" },
-  { "tool": "pcb-si", "youtubeId": "TytVuKnlkaQ", "title": "Part 2: Segmented solve", "titleZh": "中集：切三段求解", "kind": "workflow-demonstration" },
-  { "tool": "pcb-si", "youtubeId": "BxRJz8CuXBU", "title": "Part 3: Eye diagrams & TDR location", "titleZh": "下集：眼圖與 TDR 阻抗定位", "kind": "workflow-demonstration" }
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 0, "label": "總覽",
+    "youtubeId": "DJCXXqFYquI",
+    "title": "PCB SI 3D Simulation Toolkit｜功能總覽｜Feature Overview",
+    "titleZh": "功能總覽", "titleEn": "Feature Overview", "duration": "0:52",
+    "guide": [{ "label": "功能介紹", "path": "/tools/pcb-si/" }]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 19, "label": "EP19",
+    "youtubeId": "tVIF9i1YTrQ",
+    "title": "PCB SI 3D Simulation Toolkit｜安裝與試用申請｜Installation & Trial Request",
+    "titleZh": "安裝與試用申請", "titleEn": "Installation & Trial Request", "duration": "7:29",
+    "guide": [{ "label": "安裝與試用授權", "path": "/tools/pcb-si/quick-start/" }]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 20, "label": "EP20",
+    "youtubeId": "0WrsCh3PjII",
+    "title": "PCB SI 3D Simulation Toolkit｜第一次跑通｜First Run",
+    "titleZh": "第一次跑通", "titleEn": "First Run", "duration": "7:00",
+    "guide": [{ "label": "快速開始 1～5：載板到建立 Port", "path": "/tools/pcb-si/manual/#1-load-a-board--載入電路板" }]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 21, "label": "EP21",
+    "youtubeId": "oidkGt13ZaY",
+    "title": "PCB SI 3D Simulation Toolkit｜裁切外框與分段求解｜Cutout and Segmented Solving",
+    "titleZh": "裁切外框與分段求解", "titleEn": "Cutout and Segmented Solving", "duration": "8:31",
+    "guide": [
+      { "label": "預覽與裁切", "path": "/tools/pcb-si/manual/#3-preview-and-cut--預覽與裁切" },
+      { "label": "分段", "path": "/tools/pcb-si/manual/#6-segment-the-channel--分段" },
+      { "label": "指定求解器與排程", "path": "/tools/pcb-si/manual/#7-assign-solvers-and-schedule--指定求解器與排程" }
+    ]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 22, "label": "EP22",
+    "youtubeId": "dPmZzhalkqk",
+    "title": "PCB SI 3D Simulation Toolkit｜串接、設定檔與報告｜Cascade, Profiles and Reports",
+    "titleZh": "串接、設定檔與報告", "titleEn": "Cascade, Profiles and Reports", "duration": "6:40",
+    "guide": [
+      { "label": "電路串接", "path": "/tools/pcb-si/manual/#8-cascade--電路串接" },
+      { "label": "HTML 報告", "path": "/tools/pcb-si/manual/#12-html-report--一鍵-html-報告" }
+    ]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 23, "label": "EP23",
+    "youtubeId": "3qh6Hrmu5WE",
+    "title": "PCB SI 3D Simulation Toolkit｜TDR 阻抗定位｜TDR Impedance Location",
+    "titleZh": "TDR 阻抗定位", "titleEn": "TDR Impedance Location", "duration": "6:39",
+    "guide": [{ "label": "TDR 阻抗定位", "path": "/tools/pcb-si/manual/#11-tdr--tdr-阻抗定位" }]
+  },
+  {
+    "tool": "pcb-si", "series": "agent-workflow", "episode": 1, "label": "上集",
+    "youtubeId": "0q0fQNSyg-E",
+    "title": "Part 1: Channel preparation & backdrill",
+    "titleZh": "通道準備與背鑽", "titleEn": "Channel preparation & backdrill"
+  },
+  {
+    "tool": "pcb-si", "series": "agent-workflow", "episode": 2, "label": "中集",
+    "youtubeId": "TytVuKnlkaQ",
+    "title": "Part 2: Segmented solve",
+    "titleZh": "切三段求解", "titleEn": "Segmented solve"
+  },
+  {
+    "tool": "pcb-si", "series": "agent-workflow", "episode": 3, "label": "下集",
+    "youtubeId": "BxRJz8CuXBU",
+    "title": "Part 3: Eye diagrams & TDR location",
+    "titleZh": "眼圖與 TDR 阻抗定位", "titleEn": "Eye diagrams & TDR location"
+  }
 ]

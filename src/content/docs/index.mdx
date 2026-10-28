@@ -5,18 +5,25 @@ description: Jeff Hong's portfolio of Ansys simulation automation tools — feat
 
 import ViviGuide from '../../components/ViviGuide.astro';
 import PcbTraces from '../../components/PcbTraces.astro';
+import TaskLinks from '../../components/TaskLinks.astro';
+import ToolIntro from '../../components/ToolIntro.astro';
+import VideoList from '../../components/VideoList.astro';
 import WindowShot from '../../components/WindowShot.astro';
 import Workflow from '../../components/Workflow.astro';
 
 <PcbTraces />
 
-<ViviGuide>我是小維（Vivi）。第一次使用，先看左側「安裝與試用授權」；想看實際操作，可從「操作影片」開始。</ViviGuide>
+<ToolIntro slug="pcb-si" />
 
-Ansys simulation automation tools by Jeff Hong. Start with PCB SI v1.0.4: install it, then run a channel from cutout and ports through solving, cascading, TDR and the HTML report.
+<ViviGuide>我是小維（Vivi）。想做什麼，從下面「我想要…」挑一項；左側選單則依學習順序排列。</ViviGuide>
 
-<p lang="zh-Hant">這裡整理 Jeff Hong 的 Ansys 自動化工具與操作說明。目前以 PCB SI 3D Simulation Toolkit 為主，v1.0.4 從安裝、授權，一路到通道裁切、Port、求解、串接、TDR 與 HTML 報告。</p>
+## 我想要…
 
-<WindowShot eager file="crop-segment-layout.webp" source="v104-e21-seg-equal.webp" width={1190} height={468} alt="Segmentation view of the bundled Example_SYZ board: the channel split into S1, S2 and S3 with no-cut zones, and the layer panel" caption="Segmentation of the bundled Example_SYZ board into three parts." zh="內附範例板 Example_SYZ 的分段畫面：S1～S3、禁切區與圖層面板。" />
+<TaskLinks />
+
+## 最新影片
+
+<VideoList slug="pcb-si" series="tool-guide" latest={3} />
 
 ## 工作流程
 
@@ -24,11 +31,11 @@ Ansys simulation automation tools by Jeff Hong. Start with PCB SI v1.0.4: instal
 
 <Workflow />
 
-## 從左側開始讀
+<WindowShot file="crop-segment-layout.webp" source="v104-e21-seg-equal.webp" width={1190} height={468} alt="Segmentation view of the bundled Example_SYZ board: the channel split into S1, S2 and S3 with no-cut zones, and the layer panel" caption="Segmentation of the bundled Example_SYZ board into three parts." zh="內附範例板 Example_SYZ 的分段畫面：S1～S3、禁切區與圖層面板。" />
 
-第一次使用，從「安裝與試用授權」開始，再讀「快速開始」。查特定步驟時，展開「操作說明」；影片、常見問題與版本紀錄依序列在下方。手機請開啟右上角選單。
+The left menu follows the learning order; use search to find a topic. On phones, open the menu at the top right.
 
-The left menu follows the learning order. Expand the operation guide for individual steps, or use search to find a topic.
+<p lang="zh-Hant">左側選單依學習順序排列，也可用搜尋找主題；手機請開啟右上角選單。</p>
 
 ## 工具與授權
 

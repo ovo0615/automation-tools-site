@@ -5,10 +5,11 @@ description: Run a PCB SI channel end to end with v1.0.4 — load, cut, ports, s
 
 import Link from '../../../../components/Link.astro';
 import ManualShot from '../../../../components/ManualShot.astro';
+import VideoLink from '../../../../components/VideoLink.astro';
 
-This walkthrough runs the bundled `Example_SYZ` board from loading to the HTML report, using the **v1.0.4** interface shown in EP20～EP23. Select an image to view it at full size.
+This walkthrough runs the bundled `Example_SYZ` board from loading to the HTML report, using the **v1.0.4** interface shown in the tutorial videos. Select an image to view it at full size.
 
-<p class="zh" lang="zh-Hant">本頁用內附的 `Example_SYZ` 範例板，從載板一路做到 HTML 報告；畫面為 **v1.0.4** 實拍，對應 EP20～EP23。點圖片可看原尺寸。</p>
+<p class="zh" lang="zh-Hant">本頁用內附的 `Example_SYZ` 範例板，從載板一路做到 HTML 報告；畫面為 **v1.0.4** 實拍，與操作影片相同。點圖片可看原尺寸。</p>
 
 <Link to="/tools/pcb-si/quick-start/" class="button button-primary">Install & activate first · 先完成安裝與授權</Link>
 
@@ -58,6 +59,8 @@ If the system log warns that the signal-layer fill material is air, confirm the 
 
 <p class="zh" lang="zh-Hant">系統日誌若警告「訊號層填充材料為空氣」，先確認實際材料與介電常數再求解。</p>
 
+<VideoLink ep="EP21" />
+
 ## 4. Ports and frequency · Port 與頻率
 
 In **「Port 設定」**, keep **「Port 類型」** on **「自動（建議）」** unless you need another type, and confirm the endpoint components — `U14` and `U22` here. **「建議端點（最多 2 個）」** picks them automatically.
@@ -96,6 +99,8 @@ Choose the output under **「設定 Port 與求解器」**, then press **「建�
 <ManualShot file="v104-m09-ports-dialog.webp" alt="Completion dialog reporting four component ports on two components" caption="The completion dialog confirms the number of ports." zh="完成對話框：已建立 4 個元件端 Port（元件 2 個）。" />
 
 <ManualShot file="v104-m09c-layout-ports.webp" alt="Cutout Layout with endpoint Port labels at U14 and U22" caption="Verify endpoint markers on the channel." zh="在 Layout 核對 U14 與 U22 兩端的 Port 標記。" />
+
+<VideoLink ep="EP20" />
 
 ## 6. Segment the channel · 分段
 
@@ -137,6 +142,8 @@ Press **「開始混合求解排程模擬」**. Segments run in order; **「停�
 
 <ManualShot file="v104-e21-all-siwave-done.webp" alt="Scheduled solve finished with three SIwave segments complete" caption="All three SIwave segments complete." zh="三段 SIwave 全部完成。" />
 
+<VideoLink ep="EP21" />
+
 ## 8. Cascade · 電路串接
 
 Under **「電路串接」**, keep **「本工具分段結果」**, press **「預覽接線」** to check the wiring, then **「執行電路串接」**. Check the summary and the evidence tags: solver source, sweep, passivity and causality.
@@ -152,6 +159,8 @@ Cascade results from **all-SIwave** or **all-HFSS** segments. Cascading a mix of
 Cascading assumes no electromagnetic coupling between segments. If segment boundaries are too close, or a cut crosses a shared reference-plane opening, the assumption fails.
 
 <p class="zh" lang="zh-Hant">串接假設段與段之間沒有電磁耦合；切面太近，或兩側共用同一處參考層破口時，這個假設不成立。</p>
+
+<VideoLink ep="EP22" />
 
 ## 9. S-parameters · S 參數
 
@@ -181,6 +190,8 @@ The marker width reflects the spatial resolution, a physical limit rather than a
 
 <p class="zh" lang="zh-Hant">標記寬度是空間解析度，屬物理極限而非誤差。可再跑 B 法（疊構 Dk）比對；兩法位置差反映速度的不確定性。</p>
 
+<VideoLink ep="EP23" />
+
 ## 12. HTML report · 一鍵 HTML 報告
 
 Press **「更新報告快照」** on each result you want to include. In **「報告」→「預覽與輸出」**, choose the language and **「對外安全模式（隱藏本機路徑）」**, review **「輸出前檢查」**, then press **「一鍵產生 HTML 報告」**. The report is a single self-contained HTML file.
@@ -190,6 +201,8 @@ Press **「更新報告快照」** on each result you want to include. In **「�
 <ManualShot file="v104-e22-report-generated.webp" alt="Report centre 預覽與輸出 tab with language, safe mode, pre-output checks and the generated report message" caption="Generate the report after the pre-output check." zh="輸出前檢查後，一鍵產生 HTML 報告（4 張快照）。" />
 
 <ManualShot file="v104-e22-html-report.webp" alt="Generated HTML report cover for Example_SYZ with the model-quality table" caption="The report opens with model quality and its evidence." zh="報告封面與模型品質判定依據。" />
+
+<VideoLink ep="EP22" />
 
 ## Support package · 支援包
 
