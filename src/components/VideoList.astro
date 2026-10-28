@@ -6,7 +6,8 @@ import { url } from '../lib/url';
 const { slug = 'pcb-si', series = 'tool-guide', latest } = Astro.props as { slug?: string; series?: Series; latest?: number };
 // latest：首頁「最新影片」，取集數最大的幾支，連到影片頁該集。
 const all = videosOf(slug, series);
-const entries = latest ? all.filter((v) => v.episode > 0).reverse().slice(0, latest) : all;
+// 施工中（construction）的影片：影片頁顯示施工中卡片，首頁最新影片不列。
+const entries = latest ? all.filter((v) => v.episode > 0 && !v.construction).reverse().slice(0, latest) : all;
 const page = url(`/tools/${slug}/videos/`);
 ---
 {entries.length ? (
