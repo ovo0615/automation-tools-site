@@ -1,19 +1,29 @@
 ---
 title: Videos · 操作影片
-description: Public PCB SI workflow demonstrations, loaded only when you choose to play.
+description: PCB SI 3D Simulation Toolkit tool tutorials and AI agent workflow demonstrations, loaded only when you choose to play.
 ---
 
 import VideoList from '../../../../components/VideoList.astro';
 import ViviGuide from '../../../../components/ViviGuide.astro';
 
-<ViviGuide state="cheer">選一集，按「播放影片」就能在這頁觀看。播放器無法載入時，使用各集下方的 YouTube 連結。</ViviGuide>
+<ViviGuide state="cheer">選一集，點縮圖就能在這頁觀看。播放器無法載入時，使用各集下方的 YouTube 連結。</ViviGuide>
 
-These public videos demonstrate the PCB SI engineering workflow. They are not a complete guide to the current tool interface. Interface-specific tutorials are being prepared.
+The YouTube player loads only after you select a thumbnail. YouTube then receives your connection information. If embedding is blocked, use the YouTube link beneath each video.
 
-<p class="zh" lang="zh-Hant">以下公開影片示範 PCB SI 工程流程，並非現版工具介面的完整操作教學；工具操作系列製作中。</p>
+<p class="zh" lang="zh-Hant">點縮圖才載入 YouTube 播放器，之後 YouTube 會收到連線資訊。若無法嵌入，請用各集下方的連結觀看。</p>
 
-The YouTube player loads only after you select Play. YouTube then receives your connection information. If embedding is blocked, use the YouTube link beneath the player.
+## Tool tutorials · 工具操作教學
 
-<p class="zh" lang="zh-Hant">點「播放影片」才載入 YouTube 播放器，之後 YouTube 會收到連線資訊。若無法嵌入，請用下方連結觀看。</p>
+Interface tutorials for PCB SI 3D Simulation Toolkit, listed in the recommended viewing order.
 
-<VideoList slug="pcb-si" />
+<p class="zh" lang="zh-Hant">建議觀看順序：功能總覽 → EP19 安裝與試用申請 → EP20 第一次跑通 → EP21～EP23 依需要選看。</p>
+
+<VideoList slug="pcb-si" series="tool-guide" />
+
+## AI agent workflow demonstrations · AI Agent 工程流程示範
+
+These public videos demonstrate the PCB SI engineering workflow. They are not a guide to the current tool interface.
+
+<p class="zh" lang="zh-Hant">以下影片示範 PCB SI 工程流程，屬流程示範，非現版介面教學。</p>
+
+<VideoList slug="pcb-si" series="agent-workflow" />

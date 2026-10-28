@@ -21,7 +21,7 @@ Built with Astro Starlight and deployed to GitHub Pages.
 | Release notes, download button | Each tool's **public** repository: `CHANGELOG.md` (`## v…` sections only) and GitHub Releases, fetched at build time |
 | Contact and form links | `src/data/site.json` |
 | Shared tool navigation | `src/data/tool-navigation.json` |
-| Public videos | `src/data/videos.json`: `tool`, `youtubeId`, `title`, `titleZh`, `kind` |
+| Public videos | `src/data/videos.json`: `tool`, `series` (`tool-guide` or `agent-workflow`), `episode`, `label`, `youtubeId`, `title`, `titleZh`, `titleEn`; optional `duration` (e.g. `7:29`) and `guide` (matching manual sections). Thumbnails go in `public/video-thumbs/<youtubeId>.webp` (960×540) and must be listed in `guard/policy.json` |
 | Requests and public roadmap | `src/data/wishes.json`: `id`, `tool`, `title`, `titleZh`, `status` |
 | Known issues | `src/data/known-issues.json`: `id`, `tool`, `title`, `titleZh`, `description`, `descriptionZh`, `versions`; optional `source` |
 
@@ -29,7 +29,7 @@ Request states: `received`, `evaluating`, `planned`, `completed`. Empty lists sh
 
 The `trial`, `bug`, `wish` and `feedback` form keys accept company Microsoft Forms HTTPS URLs. Keep `null` until ready; pages offer email and a form-coming-soon message. The build rejects other form hosts, malformed video IDs, duplicates and missing content.
 
-Add verified public videos through the data file only. Distinguish workflow demonstrations from current-interface tutorials. The YouTube iframe is created only after a play click.
+Add verified public videos through the data file and a thumbnail. Use `series` to distinguish workflow demonstrations from current-interface tutorials. The YouTube iframe is created only after a play click.
 
 ## Guard
 

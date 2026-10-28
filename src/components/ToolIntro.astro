@@ -1,0 +1,16 @@
+---
+// 首頁最上方一句話：工具名稱、目前版本與簡介，皆取自 tools.json，不寫死。
+import tools from '../data/tools.json';
+const { slug = 'pcb-si' } = Astro.props as { slug?: string };
+const tool = tools.find((t) => t.slug === slug);
+if (!tool) throw new Error(`ToolIntro: unknown tool ${slug}`);
+const version = 'currentVersion' in tool ? tool.currentVersion : undefined;
+---
+<p class="tool-intro" lang="zh-Hant">
+  <strong>{tool.name}</strong>{version && <>（目前版本 {version}）</>}：{tool.summaryZh}
+</p>
+<p class="tool-intro-en" lang="en">{tool.name}{version && ` ${version}`}: {tool.summary}</p>
+<style>
+  .tool-intro { font-size: 1.125rem; line-height: 1.6; color: var(--sl-color-white); }
+  .tool-intro-en { color: var(--sl-color-gray-3); }
+</style>

@@ -11,8 +11,18 @@ test('only company Microsoft Forms HTTPS hosts can be configured', () => {
   const data=base();data.forms.bug=value;assert.throws(()=>assertResources(data));
  }
 });
+const video = (extra={}) => ({tool:'pcb-si',series:'tool-guide',episode:20,label:'EP20',youtubeId:'0WrsCh3PjII',title:'Example',titleZh:'範例',titleEn:'Example',duration:'7:00',...extra});
+test('video cards need a series, episode, label and well-formed length and guide links', () => {
+ const data=base();data.videos=[video({guide:[{label:'快速開始',path:'/tools/pcb-si/manual/'}]})];
+ assert.doesNotThrow(()=>assertResources(data));
+ for (const [extra, re] of [[{series:'other'},/series/],[{episode:'20'},/episode/],[{label:' '},/label/],[{duration:'7 min'},/duration/],[{guide:[{label:'x',path:'https://example.org'}]},/guide/]]) {
+  data.videos=[video(extra)];assert.throws(()=>assertResources(data),re);
+ }
+ data.videos=[video(),video({youtubeId:'oidkGt13ZaY'})];
+ assert.throws(()=>assertResources(data),/duplicate episode/);
+});
 test('malformed video and duplicate IDs fail before publishing', () => {
- const data=base();data.videos=[{tool:'pcb-si',youtubeId:'bad',title:'Example',titleZh:'範例'}];
+ const data=base();data.videos=[video({youtubeId:'bad'})];
  assert.throws(()=>assertResources(data),/YouTube ID/);
  data.videos[0].youtubeId='0q0fQNSyg-E';data.videos.push({...data.videos[0]});
  assert.throws(()=>assertResources(data),/duplicate/);

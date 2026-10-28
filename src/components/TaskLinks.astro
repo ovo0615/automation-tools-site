@@ -1,0 +1,89 @@
+---
+// 首頁「我想要…」任務入口：六張小卡，各連到既有頁面；左側導覽不變。觸控目標至少 44px。
+import { url } from '../lib/url';
+import { videosOf } from '../lib/videos';
+
+type Task = { zh: string; desc: string; to: string; more?: { label: string; to: string }[] };
+const manual = '/tools/pcb-si/manual/';
+const tasks: Task[] = [
+  { zh: '申請試用與安裝', desc: '填試用申請，收到安裝包後核對、安裝與啟用授權。', to: '/trial/', more: [{ label: '安裝步驟', to: '/tools/pcb-si/quick-start/' }] },
+  { zh: '第一次跑通', desc: '用內附範例板，從載板一路做到 HTML 報告。', to: manual },
+  {
+    zh: '查某個步驟',
+    desc: '直接跳到操作說明的章節：',
+    to: manual,
+    more: [
+      { label: '裁切', to: `${manual}#3-preview-and-cut--預覽與裁切` },
+      { label: 'Port', to: `${manual}#4-ports-and-frequency--port-與頻率` },
+      { label: '分段', to: `${manual}#6-segment-the-channel--分段` },
+      { label: '串接', to: `${manual}#8-cascade--電路串接` },
+      { label: 'TDR', to: `${manual}#11-tdr--tdr-阻抗定位` },
+      { label: '報告', to: `${manual}#12-html-report--一鍵-html-報告` },
+    ],
+  },
+  { zh: '看操作影片', desc: `工具操作教學 ${videosOf('pcb-si', 'tool-guide').length} 支與 AI Agent 流程示範，點縮圖才播放。`, to: '/tools/pcb-si/videos/' },
+  { zh: '遇到問題', desc: '先查常見問題，可重現的錯誤再回報。', to: '/tools/pcb-si/faq/', more: [{ label: 'Bug 回報', to: '/tools/pcb-si/bugs/' }] },
+  { zh: '看更新了什麼', desc: '各版本的新功能與修正。', to: '/tools/pcb-si/changelog/' },
+];
+---
+<ul class="tasks not-content" aria-label="我想要…">
+  {tasks.map((t) => (
+    <li class="task">
+      <a class="task-main" href={url(t.to)}>
+        <span class="task-title">{t.zh}</span>
+        <span class="task-desc">{t.desc}</span>
+      </a>
+      {t.more && (
+        <span class="task-more">
+          {t.more.map((m) => <a href={url(m.to)}>{m.label}</a>)}
+        </span>
+      )}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .tasks {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    max-width: 960px;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .task {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: var(--site-radius);
+    background: var(--sl-color-gray-7);
+  }
+  .task:hover { border-color: var(--sl-color-accent-high); }
+  .task-main {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  .task-title {
+    color: var(--sl-color-accent-high);
+    font-size: 1.0625rem;
+    font-weight: 650;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .task-main:hover .task-title { color: var(--sl-color-white); }
+  .task-desc { color: var(--sl-color-gray-2); font-size: 0.9375rem; line-height: 1.5; }
+  .task-more { display: flex; flex-wrap: wrap; gap: 0 0.75rem; padding: 0 1rem 0.25rem; font-size: 0.9375rem; }
+  .task-more a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .task-main:focus-visible { outline-offset: -2px; border-radius: var(--site-radius); }
+  @media (max-width: 64rem) { .tasks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 30rem) { .tasks { grid-template-columns: minmax(0, 1fr); } }
+</style>
