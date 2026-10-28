@@ -1,0 +1,44 @@
+# Temporary helper for the video page PR: fetch YouTube thumbnails as 960x540 WebP and commit them back.
+# Removed again in the same PR once the thumbnails are in.
+name: Temporary video thumbnails
+on:
+  push:
+    branches: [claude/sharp-feynman-xbaca4]
+    paths: ['.github/workflows/tmp-video-thumbs.yml']
+permissions:
+  contents: write
+jobs:
+  thumbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow==11.0.0
+      - name: Download and convert
+        run: |
+          python3 - <<'PY'
+          import io, json, urllib.request
+          from PIL import Image
+          ids = ['DJCXXqFYquI', 'tVIF9i1YTrQ', '0WrsCh3PjII', 'oidkGt13ZaY', 'dPmZzhalkqk', '3qh6Hrmu5WE']
+          for vid in ids:
+              meta = json.load(urllib.request.urlopen(f'https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v={vid}'))
+              print(vid, meta['title'])
+              for name in ('maxresdefault', 'sddefault', 'hqdefault'):
+                  try:
+                      data = urllib.request.urlopen(f'https://i.ytimg.com/vi/{vid}/{name}.jpg').read()
+                      break
+                  except Exception as e:
+                      print(' ', name, e)
+              im = Image.open(io.BytesIO(data)).convert('RGB')
+              w, h = im.size
+              th = round(w * 9 / 16)
+              im = im.crop((0, (h - th) // 2, w, (h - th) // 2 + th)).resize((960, 540), Image.LANCZOS)
+              im.save(f'public/video-thumbs/{vid}.webp', 'WEBP', quality=80, method=6)
+              print('  saved from', name, (w, h))
+          PY
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/video-thumbs
+          git commit -m '加入 6 支工具操作影片縮圖（960×540 WebP）'
+          git push
