@@ -9,7 +9,14 @@ const name = [label, v.titleZh].filter(Boolean).join(' ');
 const meta = [label, v.duration].filter(Boolean).join(' · ');
 const thumb = url(`/video-thumbs/${v.youtubeId}.webp`);
 ---
-{href ? (
+{v.construction ? (
+  <article class="video-card is-wip" id={videoAnchor(v)}>
+    <div class="video-thumb wip-thumb"><span>施工中 · Under construction</span></div>
+    <p class="video-meta">修正後重新上架</p>
+    <h3 class="video-zh">{v.titleZh}</h3>
+    <p class="video-en" lang="en">{v.titleEn}</p>
+  </article>
+) : href ? (
   <a class="video-card video-link" href={href}>
     <span class="video-thumb"><img src={thumb} width="960" height="540" alt="" loading="lazy" decoding="async" /></span>
     <span class="video-meta">{meta}</span>
@@ -78,6 +85,9 @@ const thumb = url(`/video-thumbs/${v.youtubeId}.webp`);
   .video-card.is-playing { grid-column: 1 / -1; }
   .video-card.is-playing .video-zh { font-size: 1.25rem; }
   .video-card:target .video-thumb { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }
+  /* 施工中：不放縮圖、播放器與 YouTube 連結 */
+  .wip-thumb { display: grid; place-items: center; background: var(--sl-color-gray-6); color: var(--sl-color-gray-2); font-weight: 650; }
+  .is-wip .video-zh { color: var(--sl-color-gray-2); }
   .video-link { color: inherit; text-decoration: none; }
   .video-link .video-zh { color: var(--sl-color-accent-high); text-decoration: underline; text-underline-offset: 0.2em; }
   .video-link:hover .video-zh { color: var(--sl-color-white); }
