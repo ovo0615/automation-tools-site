@@ -20,6 +20,7 @@ test('every video has a thumbnail file listed in the image policy', () => {
   }
 });
 
+// 本次恢復後不應留下施工中影片；日後要再下架，連同這條測試一起改。
 test('no video is still marked under construction', () => {
   assert.deepEqual(videos.filter((v) => v.construction).map((v) => v.label), []);
 });
@@ -41,7 +42,6 @@ test('pages and components no longer say under construction', () => {
     'src/components/FeatureTable.astro',
     'src/components/TaskLinks.astro',
   ]) {
-    if (!existsSync(new URL(p, root))) continue;
     assert.doesNotMatch(read(p), /施工中|under construction/i, p);
   }
 });
