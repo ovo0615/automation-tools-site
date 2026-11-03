@@ -1,9 +1,9 @@
 [
   {
     "tool": "pcb-si", "series": "tool-guide", "episode": 0, "label": "總覽",
-    "youtubeId": "DJCXXqFYquI", "construction": true,
+    "youtubeId": "1V3cFN6bOoE",
     "title": "PCB SI 3D Simulation Toolkit｜功能總覽｜Feature Overview",
-    "titleZh": "功能總覽", "titleEn": "Feature Overview", "duration": "0:52",
+    "titleZh": "功能總覽", "titleEn": "Feature Overview", "duration": "0:51",
     "guide": [{ "label": "功能介紹", "path": "/tools/pcb-si/" }]
   },
   {
@@ -43,10 +43,17 @@
   },
   {
     "tool": "pcb-si", "series": "tool-guide", "episode": 23, "label": "EP23",
-    "youtubeId": "3qh6Hrmu5WE", "construction": true,
+    "youtubeId": "GtbciwpU_KQ",
     "title": "PCB SI 3D Simulation Toolkit｜TDR 阻抗定位｜TDR Impedance Location",
-    "titleZh": "TDR 阻抗定位", "titleEn": "TDR Impedance Location", "duration": "6:39",
+    "titleZh": "TDR 阻抗定位", "titleEn": "TDR Impedance Location", "duration": "7:06",
     "guide": [{ "label": "TDR 阻抗定位", "path": "/tools/pcb-si/manual/#11-tdr--tdr-阻抗定位" }]
+  },
+  {
+    "tool": "pcb-si", "series": "tool-guide", "episode": 24, "label": "EP24",
+    "youtubeId": "xgZeK0-bo_4",
+    "title": "PCB SI 3D Simulation Toolkit｜IBIS 眼圖與自訂眼罩｜IBIS Eye Diagram & Custom Mask",
+    "titleZh": "IBIS 眼圖與自訂眼罩", "titleEn": "IBIS Eye Diagram & Custom Mask", "duration": "9:52",
+    "guide": [{ "label": "Beta 功能說明", "path": "/tools/pcb-si/#what-it-does" }]
   },
   {
     "tool": "pcb-si", "series": "agent-workflow", "episode": 1, "label": "上集",

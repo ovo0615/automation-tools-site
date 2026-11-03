@@ -180,11 +180,17 @@ Press **「一鍵另存完整 Touchstone」**. A Windows save dialog titled **�
 
 ## 11. TDR · TDR 阻抗定位
 
-:::caution[Under construction · 施工中]
-TDR marker positions are being checked and corrected. This section and its video are offline until the fix is released.
+In **「TDR 阻抗定位」**, the tool suggests the mode, probe and far-end pins from the cascade. Check **「模式」**, **「探棒（輸入）P」**, **「遠端 P」** and the channel length, then press **「執行 TDR」** and confirm. The rise time follows the bandwidth; the propagation velocity comes from the channel's S21 group delay. Impedance changes are ranked by reflection strength and marked back on the Layout.
 
-<span lang="zh-Hant">TDR 阻抗定位的標記位置正在檢查修正，本節說明與影片暫時下架，修正後重新放回。</span>
-:::
+<p class="zh" lang="zh-Hant">在「TDR 阻抗定位」，工具依串接結果建議模式、探棒與遠端腳位。核對「模式」「探棒（輸入）P」「遠端 P」與通道長後按「執行 TDR」並確認。上升時間由頻寬決定，傳播速度取自這條通道的 S21 群延遲；阻抗劇變依反射強度排序並標回 Layout。</p>
+
+<ManualShot file="v111-e23-tdr-result.webp" alt="TDR tab with a 17.50 ps rise time and 1.2608 mm resolution, the ranking table with A1 and A2, markers on the Layout and the impedance curve" caption="Rise time 17.50 ps, resolution 1.26 mm; A1 at 0.11 mm (near end U14), A2 at 187.8 mm (far end U22)." zh="上升時間 17.50 ps、空間解析度 1.26 mm；A1 0.11 mm 在近端 U14，A2 187.8 mm 在遠端 U22。" />
+
+Distances start at 0 mm at the probe. The marker width is the spatial resolution, a physical limit rather than an error; **±** gives the uncertainty range near both ends. If a position is far from what you expect, check the S-parameters, channel length and port definitions first.
+
+<p class="zh" lang="zh-Hant">距離從探棒端 0 mm 算起。標記寬度是空間解析度，屬物理極限而非誤差；「±」是兩端附近的不確定範圍。位置和預期差很多時，先查 S 參數、通道長度與 Port 定義。</p>
+
+<VideoLink ep="EP23" />
 
 ## 12. HTML report · 一鍵 HTML 報告
 
